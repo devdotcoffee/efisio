@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Olá, mundo!</title>
+  </head>
+  <body>
+      <div class="container">
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+            <div class="card-header">
+                <h1>Prontuário</h1>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-2">
+                                <label for="prontuarioData">Data da avaliação:</label>
+                            </div>
+                            <div class="col-3">
+                                <input class="form-control" type="date" name="prontuarioData" id="prontuarioData">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="my-4">Avaliação:</h2>
+                        <hr>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioDiagClinico">Diagnóstico Cliníco:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioDiagClinico" id="prontuarioDiagClinico" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioHistoriaClinica">História Clínica:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioHistoriaClinica" id="prontuarioHistoriaClinica" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioQueixa">Queixa Principal do Paciente:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioQueixa" id="prontuarioQueixa" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioHabito">Hábitos de Vida:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioHabito" id="prontuarioHabito" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioHma">HMA:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioHma" id="prontuarioHma" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioHmp">HMP:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioHmp" id="prontuarioHmp" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioAntPes">Antecedentes Pessoais:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioAntPes" id="prontuarioAntPes" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioAntFam">Antecedentes Familiares:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioAntFam" id="prontuarioAntFam" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioTrat">Tratamentos Realizados:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioTrat" id="prontuarioTrat" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h2>Exame Clínico/Físico</h2>
+                        <hr>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <legend class="col-form-label col-2">Apresentação do paciente: </legend>
+                                <div class="col-10 d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="deambulando" class="form-check-input" id="prontuarioAprePaciDeam" name="prontuarioAprePaci">
+                                        <label for="prontuarioAprePaciDeam" class="my-0">Deambulando</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="deambulando com apoio" class="form-check-input" id="prontuarioAprePaciDeamApoio" name="prontuarioAprePaci">
+                                        <label for="prontuarioAprePaciDeamApoio" class="my-0">Deambulando com apoio</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="cadeira de rodas" class="form-check-input" id="prontuarioAprePaciCadeira" name="prontuarioAprePaci">
+                                        <label for="prontuarioAprePaciCadeira" class="my-0">Cadeira de rodas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="internado" class="form-check-input" id="prontuarioAprePaciInternado" name="prontuarioAprePaci">
+                                        <label for="prontuarioAprePaciInternado" class="my-0">Internado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="orientado" class="form-check-input" id="prontuarioAprePaciOrientado" name="prontuarioAprePaci">
+                                        <label for="prontuarioAprePaciOrientado" class="my-0">Orientado</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <legend class=" col-form-label col-2">Exames Complementares:</legend>
+                                <div class="col-5 d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input checked type="radio" value="nao" class="form-check-input" id="prontuarioExameCompleNao" name="prontuarioExameComple">
+                                        <label for="prontuarioExameCompleNao" class="my-0">Não</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="sim" class="form-check-input" id="prontuarioExameCompleSim" name="prontuarioExameComple">
+                                        <label for="prontuarioExameCompleSim" class="my-0">Sim</label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <textarea disabled class="form-control" name="exameComplementar" id="exameComplementar" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <legend class=" col-form-label col-2">Usa Medicamentos:</legend>
+                                <div class="col-5 d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input checked type="radio" value="nao" class="form-check-input" id="prontuarioMedicamentosNao" name="prontuarioMedicamentos">
+                                        <label for="prontuarioMedicamentosNao" class="my-0">Não</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="sim" class="form-check-input" id="prontuarioMedicamentosSim" name="prontuarioMedicamentos">
+                                        <label for="prontuarioMedicamentosSim" class="my-0">Sim</label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <textarea disabled class="form-control" name="medicamentos" id="medicamentos" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <legend class=" col-form-label col-2">Realizou cirurgia:</legend>
+                                <div class="col-5 d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input checked type="radio" value="nao" class="form-check-input" id="prontuarioCirurgiaNao" name="prontuarioCirurgia">
+                                        <label for="prontuarioCirurgiaNao" class="my-0">Não</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="sim" class="form-check-input" id="prontuarioCirurgiaSim" name="prontuarioCirurgia">
+                                        <label for="prontuarioCirurgiaSim" class="my-0">Sim</label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <textarea disabled class="form-control" name="cirurgias" id="cirurgias" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <legend class="col-form-label col-2">Inspeção:</legend>
+                                <div class="col-10 d-flex align-items-center">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="normal" class="form-check-input" id="prontuarioInsNor" name="prontuarioInspecao">
+                                        <label for="prontuarioInsNor" class="my-0">Normal</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="edema" class="form-check-input" id="prontuarioInsEde" name="prontuarioInspecao">
+                                        <label for="prontuarioInsEde" class="my-0">Edema</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="" class="form-check-input" id="prontuarioInsCicaInc" name="prontuarioInspecao">
+                                        <label for="prontuarioInsCicaInc" class="my-0">Cicatrização Incompleta</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="internado" class="form-check-input" id="prontuarioInsEri" name="prontuarioInspecao">
+                                        <label for="prontuarioInsEri" class="my-0">Eritemas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" value="orientado" class="form-check-input" id="prontuarioInsOutros" name="prontuarioInspecao">
+                                        <label for="prontuarioInsOutros" class="my-0">Outros</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioSemiologia">Semiologia:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioSemiologia" id="prontuarioSemiologia" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioTestes">Testes Especificos:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioTestes" id="prontuarioTestes" rows="1"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioDor">Intensidade da Dor:</label>
+                                </div>
+                                <div class="col-10">
+                                    <input class="form-control-range" type="range" name="prontuarioDor" id="prontuarioDor" min="1" max="10" step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h2>Plano Terapêutico</h2>
+                        <hr>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioObjTrat">Objetivo de Tratamento:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioObjTrat" id="prontuarioObjTrat" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioRecurTera">Recursos Terapêuticos:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioRecurTera" id="prontuarioRecurTera" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioPlanoTer">Plano Terapêutico:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioPlanoTer" id="prontuarioPlanoTer" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="prontuarioDiagFisio">Diagnóstico Fisioterapeutico:</label>
+                                </div>
+                                <div class="col-10">
+                                    <textarea class="form-control" name="prontuarioDiagFisio" id="prontuarioDiagFisio" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+        
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $('#prontuarioExameCompleSim').on('click', () => {
+            if($('#prontuarioExameCompleSim').prop('checked'))
+            {
+                $('#exameComplementar').removeAttr('disabled');
+            }
+        });
+        $('#prontuarioExameCompleNao').on('click', () => {
+            if($('#prontuarioExameCompleNao').prop('checked'))
+            {
+                $('#exameComplementar').prop('disabled', true);
+            }
+        });
+        $('#prontuarioMedicamentosSim').on('click', () => {
+            if($('#prontuarioMedicamentosSim').prop('checked'))
+            {
+                $('#medicamentos').removeAttr('disabled');
+            }
+        });
+        $('#prontuarioMedicamentosNao').on('click', () => {
+            if($('#prontuarioMedicamentosNao').prop('checked'))
+            {
+                $('#medicamentos').prop('disabled', true);
+            }
+        });
+        $('#prontuarioCirurgiaSim').on('click', () => {
+            if($('#prontuarioCirurgiaSim').prop('checked'))
+            {
+                $('#cirurgias').removeAttr('disabled');
+            }
+        });
+        $('#prontuarioCirurgiaNao').on('click', () => {
+            if($('#prontuarioCirurgiaNao').prop('checked'))
+            {
+                $('#cirurgias').prop('disabled', true);
+            }
+        });
+    </script>
+    </body>
+</html>
