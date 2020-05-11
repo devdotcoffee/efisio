@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/pacientes', 'PacienteController@storeAJAX')->name('api.paciente');
+Route::post('/fisio', function () {
+    return 'oi';
+});
