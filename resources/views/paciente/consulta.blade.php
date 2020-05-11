@@ -11,6 +11,24 @@
         .card-header {
             background-color: transparent;
         }
+        .btn-primary {
+            border: 2px solid #5B5B5B !important;
+            color: #5B5B5B;
+            background-color: transparent;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background-color: #5B5B5B;
+            color: #fff !important;
+            border: 2px solid #fff !important;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary:active {
+            background-color: #5B5B5B !important;
+            color: #fff !important;
+            border: 2px solid #fff !important;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 @endsection
 @section('no-initial-page')
@@ -21,7 +39,13 @@
         </div>
         <div class="card-body">
             @if (count($pacientes) > 0)
-            <table class="table">
+            <div class="mb-2">
+                <input type="text" name="" id="">
+                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroPaciente">
+                    + Paciente
+                </a>
+            </div>
+            <table class="table table-hover table-sm" id="tablePaciente">
                 <thead>
                     <th>
                         #
@@ -40,7 +64,7 @@
                     @foreach ($pacientes as $paciente)
                         <tr>
                             <td>
-                                {{ $paciente['id'] }}
+                                {{ $paciente['idPaciente'] }}
                             </td>
                             <td>
                                 {{ $paciente['nome'] }}
@@ -51,6 +75,9 @@
                             <td>
                                 <button class="btn">
                                     <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-trash-alt"></i>
                                 </button>
                             </td>
                         </tr>
@@ -81,7 +108,12 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="" method="POST" id="formPaciente">
+            <div class="alert alert-danger d-none" role="alert" id="alertError">
+                <p class="alert-text text-center">
+                    Preencha todos os campos obrigatórios.
+                </p>
+            </div>
+            <form id="formPaciente">
                 @csrf
                 <div class="form-group">
                     <div class="form-row">
@@ -89,7 +121,7 @@
                             <label for="pacienteNome">Nome Completo:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteNome" type="text" class="form-control @error('pacienteNome') is-invalid @enderror">
+                            <input id="pacienteNome" type="text" class="form-control required">
                             @error('pacienteNome')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -104,7 +136,7 @@
                             <label for="pacienteCpf">CPF:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteCpf" type="text" class="form-control @error('pacienteCpf') is-invalid @enderror">
+                            <input id="pacienteCpf" type="text" class="form-control required">
                             @error('pacienteCpf')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -119,7 +151,7 @@
                             <label for="pacienteEmail">E-mail:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteEmail" type="email" class="form-control @error('pacienteEmail') is-invalid @enderror">
+                            <input id="pacienteEmail" type="email" class="form-control required">
                             @error('pacienteEmail')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -134,7 +166,7 @@
                             <label for="pacienteNascimento" >Data de Nascimento:</label>
                         </div>
                         <div class="col-6">
-                            <input id="pacienteNascimento" type="date" class="form-control @error('pacienteNascimento') is-invalid @enderror">
+                            <input id="pacienteNascimento" type="date" class="form-control required">
                             @error('pacienteNascimento')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -149,7 +181,7 @@
                             <label for="pacienteTelefone" class="text-center">Telefone:</label>
                         </div>
                         <div class="col-3">
-                            <input id="pacienteTelefone" type="text" class="form-control @error('pacienteTelefone') is-invalid @enderror">
+                            <input id="pacienteTelefone" type="text" class="form-control required">
                             @error('pacienteTelefone')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -173,7 +205,7 @@
                             <label for="pacienteCidade">Cidade:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control @error('pacienteCidade') is-invalid @enderror" type="text" name="pacienteCidade" id="pacienteCidade">
+                            <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
                             @error('pacienteCidade')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -188,7 +220,7 @@
                             <label for="pacienteBairro">Bairro:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control @error('pacienteBairro') is-invalid @enderror" type="text" name="pacienteBairro" id="pacienteBairro">
+                            <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
                             @error('pacienteBairro')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -223,7 +255,7 @@
                             <label for="pacienteEstadoCivil">Estado Civil:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control @error('pacienteEstadoCivil') is-invalid @enderror" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
+                            <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
                             @error('pacienteEstadoCivil')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -272,37 +304,62 @@
     <script>
         $.ajaxSetup({
             headers: {
-                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         
         function getPacienteInput()
         {
             var data = new Date();
-            var data = data.getFullYear() + '-' + data.getMonth() + '-' + data.getDate();
+            var data_cadastro = 
+                data.getFullYear().toString() + '-' + 
+                data.getMonth().toString() + '-' + 
+                data.getDate().toString();
+
             var paciente = {
                 nome: $('#pacienteNome').val(),
-                cpf: $('#pacienteCpf').val(),
-                email: $('#pacienteEmail').val(),
-                nascimento: $('#pacienteNascimento').val(),
-                telefone: $('#pacienteNascimento').val(),
-                sexo: $('#pacienteNascimento').val(),
-                cidade: $('#pacienteCidade').val(),
-                bairro: $('#pacienteBairro').val(),
-                endereco_residencial: $('#pacienteEnderecoRes').val(),
-                endereco_comercial: $('#pacienteEnderecoComer').val(),
-                estado_civil: $('#pacienteEstadoCivil').val(),
-                naturalidade: $('#pacienteNaturalidade').val(),
-                profissao: $('#pacienteProfissao').val(),
-                data_cadastro: data
+                
             }
-
             return paciente
         }
-        
+        function salvaPaciente(paciente)
+        {
+            $.ajax({
+                url: '/api/pacientes',
+                type: 'POST',
+                data: paciente,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.errors) 
+                    {
+                        $('#alertError').removeClass('d-none').addClass('d-block');
+                    } 
+                },
+                error: function (data) {
+                    console.log('error');
+                }
+            });
+        }
+        /*
+        function fazLinhaTabela(paciente)
+        {
+            var linhaTabela = '<tr>' +
+                                    '<td>' + paciente.id + '</td>' + 
+                                    '<td>' + paciente.nome + '</td>' +
+                                    '<td>' + paciente.cpf + '</td>'+
+                                    '<td>' +
+                                        '<button class="btn">' +
+                                            '<i class="fas fa-edit"></i>' +
+                                        '</button>' +
+                                    '</td>' +
+                                '</tr>'
+            
+            return linhaTabela;
+        }
+        */
         $('#formPaciente').submit((event) => {
             event.preventDefault();
-            let paciente = getPacienteInput();
+            salvaPaciente(getPacienteInput());
         });
     </script>
 @endsection 
