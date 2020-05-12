@@ -14,11 +14,12 @@ class CriarFisioterapeutas extends Migration
     public function up()
     {
         Schema::create('fisioterapeutas', function (Blueprint $table) {
-            $table->bigIncrements('idFisioterapeutas');
+            $table->bigIncrements('idFisioterapeuta');
             $table->string('nome', 200);
             $table->date('data_nascimento');
             $table->string('crefito', 50)->unique();
             $table->string('cpf', 50)->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

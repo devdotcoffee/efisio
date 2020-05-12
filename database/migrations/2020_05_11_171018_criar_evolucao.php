@@ -25,6 +25,7 @@ class CriarEvolucao extends Migration
             $table->foreign('idProntuario')
                 ->references('idProntuario')
                 ->on('prontuarios');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

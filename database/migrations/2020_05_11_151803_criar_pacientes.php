@@ -28,6 +28,7 @@ class CriarPacientes extends Migration
             $table->string('endereco_residencial', 250)->nullable();;
             $table->string('profissao', 100)->nullable();;
             $table->date('data_cadastro');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

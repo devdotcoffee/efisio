@@ -21,6 +21,7 @@ class CriarUsuarioPaciente extends Migration
             $table->foreign('idPaciente')
                 ->references('idPaciente')
                 ->on('pacientes');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

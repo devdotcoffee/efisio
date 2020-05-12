@@ -14,7 +14,7 @@ class CriarProntuarios extends Migration
     public function up()
     {
         Schema::create('prontuarios', function (Blueprint $table) {
-            $table->bigIncrements('idProntuarios');
+            $table->bigIncrements('idProntuario');
             $table->date('data');
             $table->longText('diagnostico_clinico')->nullable();
             $table->longText('historia_clinica')->nullable();
@@ -45,6 +45,7 @@ class CriarProntuarios extends Migration
             $table->foreign('idPaciente')
                 ->references('idPaciente')
                 ->on('pacientes');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

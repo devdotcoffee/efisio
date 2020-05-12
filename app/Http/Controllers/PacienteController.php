@@ -43,7 +43,7 @@ class PacienteController extends Controller
     public function store(PacienteValidation $request)
     {
         $request->validated();
-        $paciente = Paciente::salvarPaciente();
+        $paciente = Paciente::salvarPaciente($request);
         return redirect()->route('fisio.detalhe-paciente', $paciente['idPaciente']);
     }
 
@@ -55,7 +55,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        //
+        $paciente = Paciente::getPacienteById($id);
+        return view('paciente.detalhe', compact('paciente'));
     }
 
     /**
@@ -96,12 +97,18 @@ class PacienteController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'nome' => 'required',
+            'cpf' => 'required',
+            'nascimento' => 'required',
+            'telefone' => 'required',
+            'sexo' => 'required',
+            'email' => 'required',
+            'data_cadastro' => 'required'
         ]);
 
         if ($validation->passes()) 
         {   
             $paciente = Paciente::salvar($request);
-            return json_encode(['success' => $request->nome]);
+            return \Redirect::route('detalhe-paciente', 1);
         } else {
             return json_encode(['errors' => $validation->errors()]);
         }

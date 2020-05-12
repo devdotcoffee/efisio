@@ -21,6 +21,7 @@ class CriarUsuarioFisio extends Migration
             $table->foreign('idFisioterapeuta')
                 ->references('idFisioterapeuta')
                 ->on('fisioterapeutas');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

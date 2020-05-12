@@ -318,8 +318,21 @@
 
             var paciente = {
                 nome: $('#pacienteNome').val(),
-                
+                cpf: $('#pacienteCpf').val(),
+                email: $('#pacienteEmail').val(),
+                nascimento: $('#pacienteNascimento').val(),
+                telefone: $('#pacienteTelefone').val(),
+                sexo: $('#pacienteSexo').val(),
+                cidade: $('#pacienteCidade').val(),
+                bairro: $('#pacienteBairro').val(),
+                endereco_residencial: $('#pacienteEnderecoRes').val(),
+                endereco_comercial: $('#pacienteEnderecoComer').val(),
+                estado_civil: $('#pacienteEstadoCivil').val(),
+                naturalidade: $('#pacienteNaturalidade').val(),
+                profissao: $('#pacienteProfissao').val(),
+                data_cadastro: data_cadastro
             }
+            
             return paciente
         }
         function salvaPaciente(paciente)
@@ -359,6 +372,7 @@
         */
         $('#formPaciente').submit((event) => {
             event.preventDefault();
+            $('#alertError').removeClass('d-block').addClass('d-none');
             salvaPaciente(getPacienteInput());
         });
     </script>

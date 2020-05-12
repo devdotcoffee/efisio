@@ -23,6 +23,9 @@ Route::prefix('fisio')->group(function () {
     
     Route::post('pacientes', 'PacienteController@store')
         ->name('cadastro-paciente');
+
+    Route::get('detalhe', 'PacienteController@show')
+        ->name('detalhe-paciente');
 });
 
 Route::prefix('paciente')->group(function () {
