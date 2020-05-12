@@ -26,5 +26,6 @@ Route::prefix('fisio')->group(function () {
 });
 
 Route::prefix('paciente')->group(function () {
-    Route::get('index', 'PacienteController@indexPage')->name('home');
+    Route::get('index', 'PacienteController@indexPage')
+        ->name('home');
 });

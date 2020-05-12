@@ -12,9 +12,11 @@ class Paciente extends Model
         return self::all();
     }
 
-    public static function salvarPaciente($request) {
-        $category = new Categoria();
-        $category->nome = $request->input('categoryName');
-        $category->save();
+    public static function salvar($request) {
+        $paciente = new Paciente();
+        $paciente->nome = $request->nome;
+        $paciente->save();
+
+        return $paciente;
     }
 }

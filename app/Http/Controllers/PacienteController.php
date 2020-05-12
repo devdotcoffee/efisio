@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PacienteValidation;
+use Validator;
 use App\Paciente;
 
 class PacienteController extends Controller
@@ -42,9 +43,8 @@ class PacienteController extends Controller
     public function store(PacienteValidation $request)
     {
         $request->validated();
-        Paciente::salvar($request);
-        return redirect()->route('lista-pacientes');
-
+        $paciente = Paciente::salvarPaciente();
+        return redirect()->route('fisio.detalhe-paciente', $paciente['idPaciente']);
     }
 
     /**
@@ -90,5 +90,21 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeAJAX(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'nome' => 'required',
+        ]);
+
+        if ($validation->passes()) 
+        {   
+            $paciente = Paciente::salvar($request);
+            return json_encode(['success' => $request->nome]);
+        } else {
+            return json_encode(['errors' => $validation->errors()]);
+        }
+
     }
 }
