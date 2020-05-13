@@ -18,17 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('fisio')->group(function () {
+    Route::get('/', 'FisioController@indexPage')
+        ->name('fisio.home');
+        
     Route::get('pacientes', 'PacienteController@index')
         ->name('lista-pacientes');
     
     Route::post('pacientes', 'PacienteController@store')
         ->name('cadastro-paciente');
 
-    Route::get('detalhe', 'PacienteController@show')
+    Route::get('paciente/{id}', 'PacienteController@show')
         ->name('detalhe-paciente');
 });
 
 Route::prefix('paciente')->group(function () {
-    Route::get('index', 'PacienteController@indexPage')
-        ->name('home');
+    Route::get('/', 'PacienteController@indexPage')
+        ->name('paciente.home');
 });
