@@ -37,4 +37,24 @@ class Paciente extends Model
         $paciente = Paciente::where('idPaciente', $id)->first();
         return $paciente;
     }
+
+    public static function alterarPaciente($id, $request)
+    {
+        Paciente::where('idPaciente', $id)
+            ->update([
+                'nome' => $request->input('pacienteNome'),
+                'cpf' => $request->input('pacienteCpf'),
+                'email' => $request->input('pacienteEmail'),
+                'data_nascimento' => $request->input('pacienteNascimento'),
+                'telefone' => $request->input('pacienteTelefone'),
+                'sexo' => $request->input('pacienteSexo'),
+                'cidade' => $request->input('pacienteCidade'),
+                'bairro' => $request->input('pacienteBairro'),
+                'endereco_residencial' => $request->input('pacienteEnderecoRes'),
+                'endereco_comercial' => $request->input('pacienteEnderecoComer'),
+                'estado_civil' => $request->input('pacienteEstadoCivil'),
+                'naturalidade' => $request->input('pacienteNaturalidade'),
+                'profissao' => $request->input('pacienteProfissao')
+            ]);
+    } 
 }

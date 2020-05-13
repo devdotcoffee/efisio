@@ -11,7 +11,7 @@ class PacienteController extends Controller
 {
     public function indexPage()
     {
-        return view('paciente.paciente');
+        return view('paciente.home');
     }
     /**
      * Display a listing of the resource.
@@ -77,9 +77,11 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PacienteValidation $request, $id)
     {
-        //
+        $request->validated();
+        Paciente::alterarPaciente($id, $request);
+        return redirect()->route('lista-pacientes');
     }
 
     /**
