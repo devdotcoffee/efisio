@@ -32,7 +32,7 @@
     </style>    
 @endsection
 
-@section('content')
+@section('fisio')
     <div class="container">
         <div class="card shadow p-3 mb-5 bg-white rounded w-100 mx-auto">
             <div class="card-header">

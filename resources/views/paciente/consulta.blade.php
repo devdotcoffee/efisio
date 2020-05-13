@@ -31,7 +31,7 @@
         }
     </style>
 @endsection
-@section('no-initial-page')
+@section('fisio')
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-header">
@@ -121,7 +121,7 @@
                             <label for="pacienteNome">Nome Completo:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteNome" type="text" class="form-control required">
+                            <input id="pacienteNome" type="text" class="form-control required" name="pacienteNome">
                             @error('pacienteNome')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -136,7 +136,7 @@
                             <label for="pacienteCpf">CPF:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteCpf" type="text" class="form-control required">
+                            <input id="pacienteCpf" type="text" class="form-control required" name="pacienteCpf">
                             @error('pacienteCpf')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -151,7 +151,7 @@
                             <label for="pacienteEmail">E-mail:</label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteEmail" type="email" class="form-control required">
+                            <input id="pacienteEmail" type="email" class="form-control required" name="pacienteEmail">
                             @error('pacienteEmail')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -166,7 +166,7 @@
                             <label for="pacienteNascimento" >Data de Nascimento:</label>
                         </div>
                         <div class="col-6">
-                            <input id="pacienteNascimento" type="date" class="form-control required">
+                            <input id="pacienteNascimento" type="date" class="form-control required" name="pacienteNascimento">
                             @error('pacienteNascimento')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -181,7 +181,7 @@
                             <label for="pacienteTelefone" class="text-center">Telefone:</label>
                         </div>
                         <div class="col-3">
-                            <input id="pacienteTelefone" type="text" class="form-control required">
+                            <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
                             @error('pacienteTelefone')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}

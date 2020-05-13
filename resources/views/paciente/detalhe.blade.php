@@ -1,5 +1,5 @@
 @extends('layout._layout')
 
-@section('no-initial-page')
+@section('fisio')
     <p>{{ $paciente['idPaciente'] }}</p>
 @endsection
