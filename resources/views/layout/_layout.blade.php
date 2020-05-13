@@ -10,15 +10,19 @@
     @yield('style')
   </head>
   <body>
-    @hasSection ('no-initial-page')
-      @component('components.navbar')
+    @hasSection ('fisio')
+      @component('components.navbar-fisio')
       @endcomponent
     @endif
-    @hasSection ('no-initial-page')
-      @yield('no-initial-page')
+    @hasSection ('fisio')
+      @yield('fisio')
     @endif
-    @hasSection('content')
-      @yield('content')        
+    @hasSection ('paciente')
+        @component('components.navbar-paciente')
+        @endcomponent
+    @endif
+    @hasSection('paciente')
+      @yield('paciente')        
     @endif
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
