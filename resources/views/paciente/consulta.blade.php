@@ -11,19 +11,19 @@
         .card-header {
             background-color: transparent;
         }
-        .btn-primary {
+        .btn-dark {
             border: 2px solid #5B5B5B !important;
             color: #5B5B5B;
             background-color: transparent;
             font-weight: 500;
         }
-        .btn-primary:hover {
+        .btn-dark:hover {
             background-color: #5B5B5B;
             color: #fff !important;
             border: 2px solid #fff !important;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
-        .btn-primary:active {
+        .btn-dark:active {
             background-color: #5B5B5B !important;
             color: #fff !important;
             border: 2px solid #fff !important;
@@ -41,7 +41,7 @@
             @if (count($pacientes) > 0)
             <div class="mb-2">
                 <input type="text" name="" id="">
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroPaciente">
+                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
                     + Paciente
                 </a>
             </div>
@@ -73,10 +73,10 @@
                                 {{ $paciente['cpf'] }}
                             </td>
                             <td>
-                                <button class="btn">
+                                <button class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn">
+                                <button class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </td>
@@ -90,7 +90,7 @@
                         Não existem registros de pacientes cadastrados.
                     </p>
                 </div>
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroPaciente">
+                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
                     Adicionar paciente
                 </a>
             @endif
@@ -291,7 +291,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-dark">Cadastrar</button>
                 </div>
             </form>
         </div>
