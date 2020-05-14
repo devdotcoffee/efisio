@@ -108,10 +108,15 @@ class PacienteController extends Controller
         if ($validation->passes()) 
         {   
             $paciente = Paciente::salvar($request);
-            return \Redirect::route('detalhe-paciente', 1);
+            return json_encode(['success' => $paciente['idPaciente']]);
         } else {
             return json_encode(['errors' => $validation->errors()]);
         }
 
+    }
+    public function destroyAJAX($id)
+    {
+        Paciente::deletePaciente($id);
+        return response()->json(['success' => 'Deletado com sucesso']);
     }
 }
