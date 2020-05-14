@@ -9,7 +9,7 @@ use App\Paciente;
 
 class PacienteController extends Controller
 {
-    public function indexPage()
+    public function home()
     {
         return view('paciente.home');
     }
