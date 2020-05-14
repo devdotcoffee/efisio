@@ -21,17 +21,32 @@ Route::prefix('fisio')->group(function () {
     Route::get('/', 'FisioController@indexPage')
         ->name('fisio.home');
         
-    Route::get('pacientes', 'PacienteController@index')
+    Route::get('lista-pacientes', 'PacienteController@index')
         ->name('lista-pacientes');
     
     Route::post('pacientes', 'PacienteController@store')
-        ->name('cadastro-paciente');
+        ->name('post-cadastro-paciente');
 
     Route::get('paciente/{id}', 'PacienteController@show')
         ->name('detalhe-paciente');
+    
+    Route::get('lista-fisios', 'FisioController@index')
+        ->name('lista-fisios');
+
+    Route::get('cadastro', 'FisioController@create')
+        ->name('cadastro-fisio');
+    
+    Route::post('cadastro', 'FisioController@store')
+        ->name('post-cadastro-fisio');
+    
+    Route::get('editar/{id}', 'FisioController@edit')
+        ->name('editar-fisio');
+    
+    Route::put('editar/{id}', 'FisioController@update')
+        ->name('editar-cadastro-fisio');
 });
 
 Route::prefix('paciente')->group(function () {
-    Route::get('/', 'PacienteController@indexPage')
+    Route::get('/', 'PacienteController@home')
         ->name('paciente.home');
 });
