@@ -11,19 +11,19 @@
         .card-header {
             background-color: transparent;
         }
-        .btn-primary {
+        .btn-dark {
             border: 2px solid #5B5B5B !important;
             color: #5B5B5B;
             background-color: transparent;
             font-weight: 500;
         }
-        .btn-primary:hover {
+        .btn-dark:hover {
             background-color: #5B5B5B;
             color: #fff !important;
             border: 2px solid #fff !important;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
-        .btn-primary:active {
+        .btn-dark:active {
             background-color: #5B5B5B !important;
             color: #fff !important;
             border: 2px solid #fff !important;
@@ -35,7 +35,7 @@
 
     </style>
 @endsection
-@section('no-initial-page')
+@section('fisio')
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-header">
@@ -44,8 +44,8 @@
         <div class="card-body">
             @if (count($pacientes) > 0)
             <div class="mb-2">
-                <input class="" type="text" name="" id="">
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroPaciente">
+                <input type="text" name="" id="">
+                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
                     + Paciente
                 </a>
             </div>
@@ -77,14 +77,10 @@
                                 {{ $paciente['cpf'] }}
                             </td>
                             <td>
-                                <button class="btn">
+                                <button class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn btnDeletar" type="button" data-id="{{ $paciente['idPaciente'] }}" data-toggle="modal" data-target="#modalPacienteDeletar">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
                             </td>
-                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -94,7 +90,7 @@
                         Não existem registros de pacientes cadastrados.
                     </p>
                 </div>
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroPaciente">
+                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
                     Adicionar paciente
                 </a>
             @endif
@@ -127,7 +123,12 @@
                             </label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteNome" type="text" class="form-control required">
+                            <input id="pacienteNome" type="text" class="form-control required" name="pacienteNome">
+                            @error('pacienteNome')
+                                <small class="form-text tex-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>  
                     </div>
                 </div>
@@ -139,11 +140,12 @@
                             </label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteCpf" type="text" class="form-control required">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
                     <div class="form-row">
                         <div class="col-2">
                             <label for="pacienteEmail">
@@ -151,11 +153,12 @@
                             </label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteEmail" type="email" class="form-control required">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
                     <div class="form-row">
                         <div class="col-4">
                             <label for="pacienteNascimento">
@@ -163,7 +166,12 @@
                             </label>
                         </div>
                         <div class="col-6">
-                            <input id="pacienteNascimento" type="date" class="form-control required">
+                            <input id="pacienteNascimento" type="date" class="form-control required" name="pacienteNascimento">
+                            @error('pacienteNascimento')
+                                <small class="form-text tex-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -175,11 +183,12 @@
                             </label>
                         </div>
                         <div class="col-3">
-                            <input id="pacienteTelefone" type="text" class="form-control required">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                         <div class="col-2 d-flex">
                             <label for="pacienteSexo">
-                                Sexo: <sub class="important">*</sub>
                             </label>
                         </div>
                         <div class="col-3">
@@ -262,7 +271,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-dark">Cadastrar</button>
                 </div>
             </form>
         </div>
