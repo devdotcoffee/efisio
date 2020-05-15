@@ -122,11 +122,6 @@
                         </div>
                         <div class="col-10">
                             <input id="pacienteNome" type="text" class="form-control required" name="pacienteNome">
-                            @error('pacienteNome')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>  
                     </div>
                 </div>
@@ -137,11 +132,6 @@
                         </div>
                         <div class="col-10">
                             <input id="pacienteCpf" type="text" class="form-control required" name="pacienteCpf">
-                            @error('pacienteCpf')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -152,11 +142,6 @@
                         </div>
                         <div class="col-10">
                             <input id="pacienteEmail" type="email" class="form-control required" name="pacienteEmail">
-                            @error('pacienteEmail')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -167,11 +152,6 @@
                         </div>
                         <div class="col-6">
                             <input id="pacienteNascimento" type="date" class="form-control required" name="pacienteNascimento">
-                            @error('pacienteNascimento')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -182,11 +162,6 @@
                         </div>
                         <div class="col-3">
                             <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
-                            @error('pacienteTelefone')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                         <div class="col-2 d-flex">
                             <label for="pacienteSexo">Sexo:</label>
@@ -206,11 +181,6 @@
                         </div>
                         <div class="col-6">
                             <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
-                            @error('pacienteCidade')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -221,11 +191,6 @@
                         </div>
                         <div class="col-6">
                             <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
-                            @error('pacienteBairro')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -256,11 +221,6 @@
                         </div>
                         <div class="col-6">
                             <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
-                            @error('pacienteEstadoCivil')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -271,11 +231,6 @@
                         </div>
                         <div class="col-6">
                             <input class="form-control" type="text" name="pacienteNaturalidade" id="pacienteNaturalidade">
-                            @error('pacienteNascimento')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -304,7 +259,7 @@
     <script>
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
         
