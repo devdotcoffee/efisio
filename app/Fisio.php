@@ -10,7 +10,7 @@ class Fisio extends Model
 
     public static function todos()
     {
-        return self::all();
+        return self::paginate(2);
     }
 
     public static function salvar($request)
@@ -40,5 +40,11 @@ class Fisio extends Model
                 'crefito'           => $request->input('fisioCrefito'),
                 'cpf'               => $request->input('fisioCpf')
             ]);
+    }
+
+    public static function deletar($id)
+    {
+        Fisio::where('idFisioterapeuta', $id)
+            ->delete();
     }
 }
