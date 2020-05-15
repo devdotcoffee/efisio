@@ -42,7 +42,7 @@
         }
     </style>
 @endsection
-@section('content')
+@section('login')
     <div class="container">
         <h1 class="text-center m-2">
             <img id="logo-login" src="{{ asset('img/logo-e-fisio.svg') }}" alt="Logo e-fisio">
@@ -93,10 +93,10 @@
 
 @section('js')
 <script>
-    $('#btnFormFisio').on('click', () => {
+    $('#collapseFisio').on('show.bs.collapse', () => {
         $('#collapsePaciente').collapse('hide');
     });
-    $('#btnFormPaciente').on('click', () => {
+    $('#collapsePaciente').on('show.bs.collapse', () => {
         $('#collapseFisio').collapse('hide');
     });
 </script>
