@@ -1,6 +1,6 @@
 @extends('layout._layout')
 
-@section('page', 'Inicio')
+@section('page', 'Lista - Fisio')
 
 @section('style')
     <style>
@@ -29,6 +29,27 @@
         .card-header, .card-footer {
             background-color: transparent;
         }
+        th, td {
+            text-align: center;
+        }
+        a:hover {
+            cursor: pointer;
+        }
+        .btnDelete {
+            color: #fff !important;
+        }
+        .animate {
+            position: relative;
+            animation-name: example;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+
+        @keyframes example {
+            0%   {left:0px;}
+            100% {left:-200px;}
+        }
+        }
     </style>
 @endsection
 @section('fisio')
@@ -51,7 +72,7 @@
                             </div>
                         </form>
                     </div>
-                    <table class="table table-hover table-sm" id="tableFisio">
+                    <table class="table table-hover table-sm table-bordered" id="tableFisio">
                         <thead>
                             <th>
                                 #
@@ -61,6 +82,9 @@
                             </th>
                             <th>
                                 CREFITO
+                            </th>
+                            <th>
+                                CPF
                             </th>
                             <th>
                                 Ações
@@ -79,10 +103,14 @@
                                         {{ $fisio['crefito'] }}
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning" href="{{ route('editar-fisio', $fisio['idFisioterapeuta']) }}">
+                                        {{ $fisio['cpf'] }}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ route('editar-fisio', $fisio['idFisioterapeuta']) }}" type="button">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger">
+                                        <a class="btn btn-danger btnDelete" type="button" data-id="{{ $fisio['idFisioterapeuta'] }}" 
+                                            data-toggle="modal" data-target="#modalFisioDelete">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -90,22 +118,94 @@
                             @endforeach
                         </tbody>
                 </table>
+                {{ $fisios->links() }}
                 @else
                     <div class="alert alert-danger" role="alert">
                         <p class="alert-text text-center">
                             Não existem registros de fisioterapeutas cadastrados.
                         </p>
                     </div>
-                    <a type="button" class="btn btn-dark" href="{{ route('cadastro-fisio') }}">
-                        + Fisio
-                    </a>
                 @endif
             </div>
             <div class="card-footer">
-                <a type="button" class="btn btn-dark" href="">
+                <a type="button" class="btn btn-dark" href="{{ route('cadastro-fisio') }}">
                     + Fisio
                 </a>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalFisioDelete" tabindex="-1" 
+        role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar deleção:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">
+                        Tem certeza que deseja excluir este cadastro?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
+                        Cancelar
+                    </button>
+                    <button class="btn btn-danger" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
+                        Deletar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+            }
+        });
+        function deletaLinha(idFisio)
+        {
+            idFisio = parseInt(idFisio);
+            var rows = $('#tableFisio>tbody>tr');
+            var row = rows.filter(function(i, element) {
+                return element.cells[0].textContent == idFisio
+            });
+            if (row) {
+                row.addClass('animate');
+                //row.remove();
+            }
+            if ($('#tableFisio>tbody>tr').length == 0) {
+                location.reload();
+            }
+        }
+        function deletaFisio(idFisio)
+        {
+            $.ajax({
+                url: '/api/fisio/' + idFisio,
+                type: 'DELETE',
+                context: this,
+                success: function(data) {
+                    deletaLinha(idFisio);
+                }, 
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+        $('.btnDelete').on('click', function() {
+            let idFisio = $(this).data('id');
+            $('#btnDeleteConfirm').attr('data-id', idFisio);
+        });
+        $('#btnDeleteConfirm').on('click', function() {
+            let idFisio = $('button#btnDeleteConfirm').attr('data-id');
+            deletaFisio(idFisio);
+            $('#closeModalDelete').click(); 
+        });
+    </script>
 @endsection
