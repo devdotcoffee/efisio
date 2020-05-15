@@ -89,4 +89,9 @@ class FisioController extends Controller
     {
         //
     }
+
+    public function destroyAJAX($id)
+    {
+        Fisio::deletar($id);
+    }
 }
