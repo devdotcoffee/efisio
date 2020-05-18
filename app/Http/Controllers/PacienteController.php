@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PacienteValidation;
 use Validator;
 use App\Paciente;
+use App\Prontuario;
 
 class PacienteController extends Controller
 {
@@ -56,7 +57,11 @@ class PacienteController extends Controller
     public function show($id)
     {
         $paciente = Paciente::getPacienteById($id);
-        return view('paciente.detalhe', compact('paciente'));
+        $prontuarios = Prontuario::getProntuarioByPaciente($id);
+        return view('paciente.detalhe', [
+                                            'paciente' => $paciente, 
+                                            'prontuarios' => $prontuarios
+                                        ]);
     }
 
     /**
