@@ -30,10 +30,6 @@ class PacienteValidation extends FormRequest
             'pacienteNascimento' => 'required',
             'pacienteTelefone' => 'required',
             'pacienteSexo' => 'required',
-            'pacienteCidade' => 'required',
-            'pacienteBairro' => 'required',
-            'pacienteNaturalidade' => 'required',
-            'pacienteEstadoCivil' => 'required'
         ];
     }
 
@@ -45,11 +41,7 @@ class PacienteValidation extends FormRequest
             'pacienteEmail.required' => 'É necessário informar o e-mail do paciente',
             'pacienteNascimento.required' => 'Informe a data de nasciemnto',
             'pacienteTelefone.required' => 'Informe o telefone do paciente',
-            'pacienteSexo.required' => 'Informe o sexo do paciente',
-            'pacienteCidade.required' => 'Informe a cidade do paciente',
-            'pacienteBairro.required' => 'Informe o bairro do paciente',
-            'pacienteNaturalidade.required' => 'Informe a naturalidade do paciente',
-            'pacienteEstadoCivil.required' => 'Informe o estado civil'
+            'pacienteSexo.required' => 'Informe o sexo do paciente'
         ];
     }
 }
