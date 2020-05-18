@@ -52,9 +52,13 @@ class Paciente extends Model
                 'bairro' => $request->input('pacienteBairro'),
                 'endereco_residencial' => $request->input('pacienteEnderecoRes'),
                 'endereco_comercial' => $request->input('pacienteEnderecoComer'),
-                'estado_civil' => $request->input('pacienteEstadoCivil'),
                 'naturalidade' => $request->input('pacienteNaturalidade'),
                 'profissao' => $request->input('pacienteProfissao')
             ]);
-    } 
+    }
+    public static function deletar($id)
+    {
+        self::where('idPaciente', $id)
+            ->delete();
+    }
 }

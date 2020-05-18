@@ -67,7 +67,8 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paciente = Paciente::getPacienteById($id);
+        return view('paciente.editar', compact('paciente'));
     }
 
     /**
@@ -110,7 +111,7 @@ class PacienteController extends Controller
         if ($validation->passes()) 
         {   
             $paciente = Paciente::salvar($request);
-            return json_encode(['success' => $paciente['idPaciente']]);
+            return json_encode(['success' => $paciente['id']]);
         } else {
             return json_encode(['errors' => $validation->errors()]);
         }
@@ -118,7 +119,7 @@ class PacienteController extends Controller
     }
     public function destroyAJAX($id)
     {
-        Paciente::deletePaciente($id);
+        Paciente::deletar($id);
         return response()->json(['success' => 'Deletado com sucesso']);
     }
 }
