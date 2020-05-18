@@ -32,7 +32,13 @@
         th, td {
             text-align: center;
         }
-
+        .important {
+            font-size: 11pt;
+            color: #ff0000;
+        }
+        .btnDelete {
+            color: #fff !important; 
+        }
     </style>
 @endsection
 @section('fisio')
@@ -44,10 +50,16 @@
         <div class="card-body">
             @if (count($pacientes) > 0)
             <div class="mb-2">
-                <input type="text" name="" id="">
-                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
-                    + Paciente
-                </a>
+                <form>
+                    <div class="input-group mb-2 w-100">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="inputPesquisa" placeholder="Pesquise...">
+                    </div>
+                </form>
             </div>
             <table class="table table-hover table-sm" id="tabelaPaciente">
                 <thead>
@@ -77,9 +89,13 @@
                                 {{ $paciente['cpf'] }}
                             </td>
                             <td>
-                                <button class="btn btn-warning">
+                                <a class="btn btn-info" type="button" href="{{ route('editar-paciente', $paciente['idPaciente']) }}">
                                     <i class="fas fa-edit"></i>
-                                </button>
+                                </a>
+                                <a class="btn btn-danger btnDelete" type="button" data-id="{{ $paciente['idPaciente'] }}" 
+                                    data-toggle="modal" data-target="#modalPacienteDeletar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
                             </td>
                     @endforeach
                 </tbody>
@@ -90,176 +106,181 @@
                         Não existem registros de pacientes cadastrados.
                     </p>
                 </div>
-                <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
-                    Adicionar paciente
-                </a>
             @endif
+        </div>
+        <div class="card-footer">
+            <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
+                + Paciente
+            </a>
         </div>
     </div>
 </div>
 
 <div class="modal fade" id="cadastroPaciente" tabindex="-1" role="dialog" aria-labelledby="Cadastro de paciente" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cadastrar paciente</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="alert alert-danger d-none" role="alert" id="alertError">
-                <p class="alert-text text-center">
-                    Preencha todos os campos obrigatórios.
-                </p>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Cadastrar paciente
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <form id="formPaciente">
-                @csrf
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-2">
-                            <label for="pacienteNome">
-                                Nome Completo: <sub class="important">*</sub>
-                            </label>
-                        </div>
-                        <div class="col-10">
-                            <input id="pacienteNome" type="text" class="form-control required" name="pacienteNome">
-                        </div>  
-                    </div>
+            <div class="modal-body">
+                <div class="alert alert-danger d-none" role="alert" id="alertError">
+                    <p class="alert-text text-center">
+                        Preencha todos os campos obrigatórios.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-2">
-                            <label for="pacienteCpf">
-                                CPF: <sub class="important">*</sub>
-                            </label>
-                        </div>
-                        <div class="col-10">
-                            <input id="pacienteCpf" type="text" class="form-control required" name="pacienteCpf">
+                <form id="formPaciente">
+                    @csrf
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-2">
+                                <label for="pacienteNome">
+                                    Nome Completo: <sup class="important">*</sup>
+                                </label>
+                            </div>
+                            <div class="col-10">
+                                <input id="pacienteNome" type="text" class="form-control required" name="pacienteNome">
+                            </div>  
                         </div>
                     </div>
-                </div>
-                    <div class="form-row">
-                        <div class="col-2">
-                            <label for="pacienteEmail">
-                                E-mail: <sub class="important">*</sub>
-                            </label>
-                        </div>
-                        <div class="col-10">
-                            <input id="pacienteEmail" type="email" class="form-control required" name="pacienteEmail">
-                        </div>
-                    </div>
-                </div>
-                    <div class="form-row">
-                        <div class="col-4">
-                            <label for="pacienteNascimento">
-                                Data de Nascimento: <sub class="important">*</sub>
-                            </label>
-                        </div>
-                        <div class="col-6">
-                            <input id="pacienteNascimento" type="date" class="form-control required" name="pacienteNascimento">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-2">
+                                <label for="pacienteCpf">
+                                    CPF: <sup class="important">*</sup>
+                                </label>
+                            </div>
+                            <div class="col-10">
+                                <input id="pacienteCpf" type="text" class="form-control required" name="pacienteCpf">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-2 d-flex">
-                            <label for="pacienteTelefone" class="text-center">
-                                Telefone: <sub class="important">*</sub>
-                            </label>
-                        </div>
-                        <div class="col-3">
-                            <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
-                        </div>
-                        <div class="col-2 d-flex">
-                            <label for="pacienteSexo">
-                            </label>
-                        </div>
-                        <div class="col-3">
-                            <select name="pacienteSexo" id="pacienteSexo" class="form-control">
-                                <option value="M">M</option>
-                                <option value="F">F</option>
-                            </select>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-2">
+                                <label for="pacienteEmail">
+                                    E-mail: <sup class="important">*</sup>
+                                </label>
+                            </div>
+                            <div class="col-10">
+                                <input id="pacienteEmail" type="email" class="form-control required" name="pacienteEmail">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-4">
-                            <label for="pacienteCidade">Cidade:</label>
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-4">
-                            <label for="pacienteBairro">Bairro:</label>
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-4">
+                                <label for="pacienteNascimento">
+                                    Data de Nascimento: <sup class="important">*</sup>
+                                </label>
+                            </div>
+                            <div class="col-6">
+                                <input id="pacienteNascimento" type="date" class="form-control required" name="pacienteNascimento">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <label for="pacienteEnderecoRes">Endereço Residencial:</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="pacienteEnderecoRes" id="pacienteEnderecoRes">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <label for="pacienteEnderecoComer">Endereço Comercial:</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="pacienteEnderecoComer" id="pacienteEnderecoComer">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <label for="pacienteEstadoCivil">Estado Civil:</label>
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-2 d-flex">
+                                <label for="pacienteTelefone" class="text-center">
+                                    Telefone: <sup class="important">*</sup>
+                                </label>
+                            </div>
+                            <div class="col-3">
+                                <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
+                            </div>
+                            <div class="col-2 d-flex">
+                                <label for="pacienteSexo">Sexo</label>
+                            </div>
+                            <div class="col-3">
+                                <select name="pacienteSexo" id="pacienteSexo" class="form-control">
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <label for="pacienteNaturalidade">Naturalidade:</label>
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control" type="text" name="pacienteNaturalidade" id="pacienteNaturalidade">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <label for="pacienteProfissao">Profissão:</label>
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control" type="text" name="pacienteProfissao" id="pacienteProfissao">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-4">
+                                <label for="pacienteCidade">Cidade:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-dark">Cadastrar</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-4">
+                                <label for="pacienteBairro">Bairro:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <label for="pacienteEnderecoRes">Endereço Residencial:</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="pacienteEnderecoRes" id="pacienteEnderecoRes">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <label for="pacienteEnderecoComer">Endereço Comercial:</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="pacienteEnderecoComer" id="pacienteEnderecoComer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <label for="pacienteEstadoCivil">Estado Civil:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <label for="pacienteNaturalidade">Naturalidade:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="pacienteNaturalidade" id="pacienteNaturalidade">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <label for="pacienteProfissao">Profissão:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="pacienteProfissao" id="pacienteProfissao">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="supmit" class="btn btn-dark">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
 </div>
 <div class="modal fade" id="modalPacienteDeletar" 
@@ -335,7 +356,8 @@
                 success: function (data) {
                     if (data.success)
                     {
-                        window.location.replace('/fisio/detalhe/' + data.success);  
+                        console.log(data);
+                        window.location.replace('/fisio/detalhe-paciente/' + data.success);  
                     }
                     if (data.errors) 
                     {
@@ -349,13 +371,17 @@
         }
         function deletarLinha(idPaciente)
         {
+            idPaciente = parseInt(idPaciente);
             var rows = $('#tabelaPaciente>tbody>tr');
             var row = rows.filter(function(i, element) {
                 return element.cells[0].textContent == idPaciente
             });
             if (row) {
                 row.remove();
-            } 
+            }
+            if ($('#tabelaPaciente>tbody>tr').length == 0) {
+                location.reload();
+            }
         }
         function deletarPaciente(idPaciente)
         {
@@ -371,32 +397,15 @@
                 }
             });
         }
-        $('.btnDeletar').on('click', function() {
+        $('.btnDelete').on('click', function() {
             let idPaciente = $(this).data('id');
             $('#btnConfirmarDeletar').attr('data-id', idPaciente);
         });
         $('#btnConfirmarDeletar').on('click', function() {
-            let idPaciente = $(this).data('id');
+            let idPaciente = $('button#btnConfirmarDeletar').attr('data-id');
             deletarPaciente(idPaciente);
             $('#closeModalDelete').click(); 
         });
-        /*
-        function fazLinhaTabela(paciente)
-        {
-            var linhaTabela = '<tr>' +
-                                    '<td>' + paciente.id + '</td>' + 
-                                    '<td>' + paciente.nome + '</td>' +
-                                    '<td>' + paciente.cpf + '</td>'+
-                                    '<td>' +
-                                        '<button class="btn">' +
-                                            '<i class="fas fa-edit"></i>' +
-                                        '</button>' +
-                                    '</td>' +
-                                '</tr>'
-            
-            return linhaTabela;
-        }
-        */
         $('#formPaciente').submit((event) => {
             event.preventDefault();
             $('#alertError').removeClass('d-block').addClass('d-none');
