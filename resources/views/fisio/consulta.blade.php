@@ -4,45 +4,8 @@
 
 @section('style')
     <style>
-        body {
-            background: url("{{ asset('img/bkg-e-fisio.svg') }}") no-repeat center fixed;
-            background-size: cover;
-        }
-        .btn-dark {
-            border: 2px solid #5B5B5B !important;
-            color: #5B5B5B ;
-            background-color: transparent;
-            font-weight: 500;
-        }
-        .btn-dark:hover {
-            background-color: #5B5B5B;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .btn-dark:active {
-            background-color: #5B5B5B !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .card-header, .card-footer {
-            background-color: transparent;
-        }
-        th, td {
-            text-align: center;
-        }
-        a:hover {
-            cursor: pointer;
-        }
         .btnDelete {
             color: #fff !important;
-        }
-        .animate {
-            position: relative;
-            animation-name: example;
-            animation-duration: 1s;
-            animation-timing-function: ease;
         }
     </style>
 @endsection

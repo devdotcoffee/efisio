@@ -4,38 +4,6 @@
 
 @section('style')
     <style>
-        body {
-            background: url("{{ asset('img/bkg-e-fisio.svg') }}") no-repeat center fixed;
-            background-size: cover;
-        }
-        .card-header {
-            background-color: transparent;
-        }
-        .btn-dark {
-            border: 2px solid #5B5B5B !important;
-            color: #5B5B5B;
-            background-color: transparent;
-            font-weight: 500;
-        }
-        .btn-dark:hover {
-            background-color: #5B5B5B;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .btn-dark:active {
-            background-color: #5B5B5B !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        th, td {
-            text-align: center;
-        }
-        .important {
-            font-size: 11pt;
-            color: #ff0000;
-        }
         .btnDelete {
             color: #fff !important; 
         }
@@ -91,10 +59,16 @@
                             <td>
                                 <a class="btn btn-info" type="button" href="{{ route('editar-paciente', $paciente['idPaciente']) }}">
                                     <i class="fas fa-edit"></i>
+                                    Editar
                                 </a>
                                 <a class="btn btn-danger btnDelete" type="button" data-id="{{ $paciente['idPaciente'] }}" 
                                     data-toggle="modal" data-target="#modalPacienteDeletar">
                                     <i class="fas fa-trash-alt"></i>
+                                    Excluir
+                                </a>
+                                <a class="btn btn-success" type="button" href="{{ route('detalhe-paciente', $paciente['idPaciente']) }}">
+                                    <i class="far fa-id-badge"></i>
+                                    Detalhe
                                 </a>
                             </td>
                     @endforeach

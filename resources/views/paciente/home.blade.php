@@ -4,10 +4,6 @@
 
 @section('style')
     <style>
-        body {
-            background: url("{{ asset('img/bkg-e-fisio.svg') }}") no-repeat center fixed;
-            background-size: cover;
-        }
         #logo-login {
             width: 100%;
         }

@@ -4,13 +4,6 @@
 
 @section('style')
     <style>
-        body {
-            background: url("{{ asset('img/bkg-e-fisio.svg') }}") no-repeat center fixed;
-            background-size: cover;
-        }
-        .card-header {
-            background-color: transparent;
-        }
         .btnForm {
             background: #5B5B5B;
             border-radius: 4px;

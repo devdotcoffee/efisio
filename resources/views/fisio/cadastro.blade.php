@@ -2,39 +2,6 @@
 
 @section('page', 'Cadastro Fisio')
 
-@section('style')
-    <style>
-        body {
-            background: url("{{ asset('img/bkg-e-fisio.svg') }}") no-repeat center fixed;
-            background-size: cover;
-        }
-        .card-header {
-            background-color: transparent;
-        }
-        .btn-dark {
-            border: 2px solid #5B5B5B !important;
-            color: #5B5B5B;
-            background-color: transparent;
-            font-weight: 500;
-        }
-        .btn-dark:hover {
-            background-color: #5B5B5B;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .btn-dark:active {
-            background-color: #5B5B5B !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .error-message {
-            color: #ff0000;
-        }
-    </style>
-@endsection
-
 @section('fisio')
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
