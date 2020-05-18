@@ -27,7 +27,7 @@ Route::prefix('fisio')->group(function () {
     Route::post('pacientes', 'PacienteController@store')
         ->name('post-cadastro-paciente');
 
-    Route::get('paciente/{id}', 'PacienteController@show')
+    Route::get('detalhe-paciente/{id}', 'PacienteController@show')
         ->name('detalhe-paciente');
     
     Route::get('lista-fisios', 'FisioController@index')
@@ -44,6 +44,9 @@ Route::prefix('fisio')->group(function () {
     
     Route::put('editar/{id}', 'FisioController@update')
         ->name('editar-cadastro-fisio');
+    
+    Route::get('editar-paciente/{id}', 'PacienteController@edit')
+        ->name('eidtar-cadastro-paciente');
 });
 
 Route::prefix('paciente')->group(function () {

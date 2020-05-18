@@ -23,3 +23,5 @@ Route::post('/fisio', function () {
 });
 Route::delete('/fisio/{id}', 'FisioController@destroyAJAX')
     ->name('api-deleta-fisio');
+Route::delete('/paciente/{id}', 'PacienteController@destroyAJAX')
+    ->name('api-deleta-paciente');
