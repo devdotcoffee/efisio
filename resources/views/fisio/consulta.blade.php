@@ -44,12 +44,6 @@
             animation-duration: 1s;
             animation-timing-function: ease;
         }
-
-        @keyframes example {
-            0%   {left:0px;}
-            100% {left:-200px;}
-        }
-        }
     </style>
 @endsection
 @section('fisio')
@@ -177,8 +171,7 @@
                 return element.cells[0].textContent == idFisio
             });
             if (row) {
-                row.addClass('animate');
-                //row.remove();
+                row.remove();
             }
             if ($('#tableFisio>tbody>tr').length == 0) {
                 location.reload();
