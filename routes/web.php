@@ -46,7 +46,10 @@ Route::prefix('fisio')->group(function () {
         ->name('editar-cadastro-fisio');
     
     Route::get('editar-paciente/{id}', 'PacienteController@edit')
-        ->name('eidtar-cadastro-paciente');
+        ->name('editar-paciente');
+    
+    Route::put('editar-paciente/{id}', 'PacienteController@update')
+        ->name('editar-cadastro-paciente');
 });
 
 Route::prefix('paciente')->group(function () {
