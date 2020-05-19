@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('fisio')->group(function () {
-    Route::get('/', 'FisioController@indexPage')
+    Route::get('/', 'FisioController@home')
         ->name('fisio.home');
         
     Route::get('lista-pacientes', 'PacienteController@index')

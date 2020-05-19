@@ -64,7 +64,7 @@
                         <label for="senhaPaciente">Senha:</label>
                         <input id="senhaPaciente" type="password" class="form-control">
                     </div>
-                    <button class="btn btnForm w-100">Entrar</button>
+                    <a href="{{ route('paciente.home') }}" class="btn btnForm w-100">Entrar</a>
                 </form>
             </div>
         </div>
@@ -80,7 +80,7 @@
                         <label for="senha">Senha:</label>
                         <input id="senha" type="password" class="form-control" name="password">
                     </div>
-                    <button class="btn btnForm w-100">Entrar</button>
+                    <a href="{{ route('fisio.home') }}" class="btn btnForm w-100">Entrar</a>
                 </form>
             </div>
         </div>

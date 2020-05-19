@@ -8,6 +8,10 @@ use App\Fisio;
 
 class FisioController extends Controller
 {
+    public function home()
+    {
+        return view('fisio.home');
+    }
     /**
      * Display a listing of the resource.
      *

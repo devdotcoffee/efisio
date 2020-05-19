@@ -36,3 +36,12 @@ a:hover {
     font-size: 11pt;
     color: #ff0000;
 }
+.btn-nav {
+    color: #fff;
+    margin: 0 5px 0 5px; 
+}
+.btn-nav:hover {
+    color: #fff;
+    border: #fff 1px solid;
+    border-radius: 5px;
+}

@@ -29,7 +29,7 @@
                     </div>
                 </form>
             </div>
-            <table class="table table-hover table-sm" id="tabelaPaciente">
+            <table class="table table-hover table-sm table-bordered" id="tabelaPaciente">
                 <thead>
                     <th>
                         #

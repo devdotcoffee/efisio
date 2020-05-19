@@ -79,7 +79,7 @@
                                 20/04/2020
                             </td>
                             <td>
-                                Fernando Neves
+                                Erick Oliveira
                             </td>
                             <td>                                
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalProntuario">
@@ -95,7 +95,7 @@
                                 20/04/2020
                             </td>
                             <td>
-                                Fernando Neves
+                                Erick Oliveira
                             </td>
                             <td>                   
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalProntuario">
