@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProntuarioValidation;
+use App\Prontuario;
+use App\Paciente;
 
 class ProntuarioController extends Controller
 {
@@ -13,7 +16,7 @@ class ProntuarioController extends Controller
      */
     public function index()
     {
-        //
+        return Prontuario::todos();
     }
 
     /**
@@ -21,9 +24,10 @@ class ProntuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $paciente = Paciente::getPacienteById($id);
+        return view('prontuario.cadastro', compact('paciente'));
     }
 
     /**
@@ -32,9 +36,11 @@ class ProntuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, ProntuarioValidation $request)
     {
-        //
+        $request->validated();
+        Prontuario::salvar($id, $request);
+        return redirect()->route('detalhe-paciente', $id);
     }
 
     /**
@@ -56,7 +62,8 @@ class ProntuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $prontuario = Prontuario::getProntuarioById($id);
+        return view('prontuario.editar', compact('prontuario'));
     }
 
     /**
@@ -66,9 +73,11 @@ class ProntuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProntuarioValidation $request, $id)
     {
-        //
+        $request->validated();
+        Prontuario::alterar($id, $request);
+        return redirect()->route('lista-pacientes');
     }
 
     /**
@@ -79,6 +88,6 @@ class ProntuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Prontuario::apagar($id);
     }
 }
