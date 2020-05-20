@@ -7,7 +7,7 @@
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-header">
-            <h3>Editar dados - {{ $paciente['idPaciente'] }}</h3>
+            <h3>Editar dados - {{ $paciente['nome'] }}</h3>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('editar-cadastro-paciente', $paciente['idPaciente']) }}" id="formPaciente">
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark">Cadastrar</button>
+                <button type="submit" class="btn btn-dark">Editar</button>
             </form>
         </div>
     </div>
