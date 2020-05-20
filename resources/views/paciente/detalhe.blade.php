@@ -13,6 +13,9 @@
         #accordionPaciente {
             margin-bottom: 15px;
         }
+        .btnDelete, .btn-warning {
+            color: #fff !important;
+        }
     </style>
 @endsection
 
@@ -117,9 +120,22 @@
         <div class="card-body">
             <h3 class="card-title">Prontuários do Paciente</h3>
             <hr>
+            <form>
+                <div class="input-group mb-2 w-100">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="inputPesquisa" placeholder="Pesquise...">
+                </div>
+            </form>
             @if (count($prontuarios) > 0)
-                <table>
+                <table class="table table-sm table-hover table-bordered">
                     <thead>
+                        <th>
+                            #
+                        </th>
                         <th>
                             Data
                         </th>
@@ -128,34 +144,110 @@
                         </th>
                     </thead>
                     <tbody>
+                        @foreach ($prontuarios as $prontuario)
                         <tr>
+                            <td>
+                                {{ $prontuario['idProntuario'] }}
+                            </td>
                             <td>
                                 {{ $prontuario['data'] }}
                             </td>
                             <td>
+                                <a class="btn btn-warning" type="button" href="{{ route('editar-prontuario', $prontuario['idProntuario']) }}">
+                                    <i class="fas fa-edit"></i>
+                                    Editar
+                                </a>
                                 <a class="btn btn-info" href="">
                                     <i class="fas fa-align-justify"></i>
+                                    Detalhe
                                 </a>
                                 <a class="btn btn-danger" href="">
                                     <i class="fas fa-file-download"></i>
+                                    PDF
+                                </a>
+                                <a class="btn btn-danger btnDelete" type="button" data-id="{{ $prontuario['idProntuario'] }}" 
+                                    data-toggle="modal" data-target="#modalProntuarioDeletar">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Deletar
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             @else
                 <div class="alert alert-danger" role="alert">
                     <p class="alert-text text-center">
-                        Não existem registros de pacientes cadastrados.
+                        Não existem registros de prontuários cadastrados.
                     </p>
                 </div>
             @endif
         </div>
         <div class="card-footer">
-            <a type="button" class="btn btn-dark">
+            <a href="{{ route('cadastro-prontuario', $paciente['idPaciente']) }}" type="button" class="btn btn-dark">
                 + Prontuários
             </a>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalProntuarioDeletar" 
+    tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar deleção:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">
+                    Tem certeza que deseja excluir este prontuário?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
+                    Cancelar
+                </button>
+                <button class="btn btn-danger" type="button" aria-label="Deletar" id="btnConfirmarDeletar" data-id="">
+                    Deletar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        function deletarProntuario(idProntuario)
+        {
+            $.ajax({
+                url: '/api/prontuario/' + idProntuario,
+                type: 'DELETE',
+                context: this,
+                success: function(data) {
+                    location.reload();
+                }, 
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+        $('.btnDelete').on('click', function() {
+            let idProntuario = $(this).data('id');
+            $('#btnConfirmarDeletar').attr('data-id', idProntuario);
+        });
+        $('#btnConfirmarDeletar').on('click', function() {
+            let idProntuario = $('button#btnConfirmarDeletar').attr('data-id');
+            deletarProntuario(idProntuario);
+            $('#closeModalDelete').click(); 
+        });
+    </script>
 @endsection
