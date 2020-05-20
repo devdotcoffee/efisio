@@ -50,6 +50,18 @@ Route::prefix('fisio')->group(function () {
     
     Route::put('editar-paciente/{id}', 'PacienteController@update')
         ->name('editar-cadastro-paciente');
+    
+    Route::get('prontuario/{id}', 'ProntuarioController@create')
+        ->name('cadastro-prontuario');
+
+    Route::post('prontuario/{id}', 'ProntuarioController@store')
+        ->name('post-cadastro-prontuario');
+
+    Route::get('editar-prontuario/{id}', 'ProntuarioController@edit')
+        ->name('editar-prontuario');
+    
+    Route::put('editar-prontuario/{id}', 'ProntuarioController@update')
+        ->name('editar-cadastro-prontuario');
 });
 
 Route::prefix('paciente')->group(function () {
