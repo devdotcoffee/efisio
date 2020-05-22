@@ -45,3 +45,9 @@ a:hover {
     border: #fff 1px solid;
     border-radius: 5px;
 }
+.btn-warning {
+    color: #fff !important;
+}
+.btnDelete {
+    color: #fff !important;
+}
