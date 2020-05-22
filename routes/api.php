@@ -27,3 +27,5 @@ Route::delete('/paciente/{id}', 'PacienteController@destroyAJAX')
     ->name('api-deleta-paciente');
 Route::delete('prontuario/{id}', 'ProntuarioController@destroy')
     ->name('api-delete-prontuario');
+Route::delete('evolucao/{id}', 'EvolucaoController@destroy')
+    ->name('api-delete-evolucao');

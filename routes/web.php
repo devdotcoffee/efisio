@@ -62,6 +62,21 @@ Route::prefix('fisio')->group(function () {
     
     Route::put('editar-prontuario/{id}', 'ProntuarioController@update')
         ->name('editar-cadastro-prontuario');
+
+    Route::get('evolucoes/{id}', 'EvolucaoController@index')
+        ->name('lista-evolucoes');
+    
+    Route::get('evolucao/{id}', 'EvolucaoController@create')
+        ->name('cadastro-evolucao');
+    
+    Route::post('evolucao/{id}', 'EvolucaoController@store')
+        ->name('post-cadastro-evolucao');
+
+    Route::get('editar-evolucao/{id}', 'EvolucaoController@edit')
+        ->name('editar-evolucao');
+
+    Route::put('editar-evolucao/{id}', 'EvolucaoController@update')
+        ->name('editar-cadastro-evolucao');
 });
 
 Route::prefix('paciente')->group(function () {
