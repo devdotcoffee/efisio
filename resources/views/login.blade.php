@@ -88,12 +88,5 @@
 @endsection
 
 @section('js')
-<script>
-    $('#collapseFisio').on('show.bs.collapse', () => {
-        $('#collapsePaciente').collapse('hide');
-    });
-    $('#collapsePaciente').on('show.bs.collapse', () => {
-        $('#collapseFisio').collapse('hide');
-    });
-</script>
+    <script src="{{ asset('js/login.js') }}"></script>
 @endsection

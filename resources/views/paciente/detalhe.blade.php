@@ -13,9 +13,6 @@
         #accordionPaciente {
             margin-bottom: 15px;
         }
-        .btnDelete, .btn-warning {
-            color: #fff !important;
-        }
     </style>
 @endsection
 
@@ -31,7 +28,7 @@
             </h2>
           </div>
       
-          <div id="collapsePaciente" class="collapse show" aria-labelledby="collapsePaciente" data-parent="#accordionPaciente">
+          <div id="collapsePaciente" class="collapse" aria-labelledby="collapsePaciente" data-parent="#accordionPaciente">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h6>Nome:</h6>
@@ -153,19 +150,19 @@
                                 {{ $prontuario['data'] }}
                             </td>
                             <td>
-                                <a class="btn btn-warning" type="button" href="{{ route('editar-prontuario', $prontuario['idProntuario']) }}">
+                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('editar-prontuario', $prontuario['idProntuario']) }}">
                                     <i class="fas fa-edit"></i>
                                     Editar
                                 </a>
-                                <a class="btn btn-info" href="">
-                                    <i class="fas fa-align-justify"></i>
-                                    Detalhe
+                                <a class="btn btn-success btn-sm" href="{{ route('lista-evolucoes', $prontuario['idProntuario']) }}">
+                                    <i class="fas fa-book-open"></i>
+                                    Detalhe/Evoluções
                                 </a>
-                                <a class="btn btn-danger" href="">
+                                <a class="btn btn-danger btn-sm" href="">
                                     <i class="fas fa-file-download"></i>
                                     PDF
                                 </a>
-                                <a class="btn btn-danger btnDelete" type="button" data-id="{{ $prontuario['idProntuario'] }}" 
+                                <a class="btn btn-danger btn-sm btnDelete" type="button" data-id="{{ $prontuario['idProntuario'] }}" 
                                     data-toggle="modal" data-target="#modalProntuarioDeletar">
                                     <i class="fas fa-trash-alt"></i>
                                     Deletar
@@ -220,34 +217,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        function deletarProntuario(idProntuario)
-        {
-            $.ajax({
-                url: '/api/prontuario/' + idProntuario,
-                type: 'DELETE',
-                context: this,
-                success: function(data) {
-                    location.reload();
-                }, 
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-        $('.btnDelete').on('click', function() {
-            let idProntuario = $(this).data('id');
-            $('#btnConfirmarDeletar').attr('data-id', idProntuario);
-        });
-        $('#btnConfirmarDeletar').on('click', function() {
-            let idProntuario = $('button#btnConfirmarDeletar').attr('data-id');
-            deletarProntuario(idProntuario);
-            $('#closeModalDelete').click(); 
-        });
-    </script>
+    <script src="{{ asset('js/pacienteDetalhe.js') }}"></script>
 @endsection

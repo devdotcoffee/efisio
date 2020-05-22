@@ -2,13 +2,6 @@
 
 @section('page', 'Lista - Fisio')
 
-@section('style')
-    <style>
-        .btnDelete {
-            color: #fff !important;
-        }
-    </style>
-@endsection
 @section('fisio')
     <div class="container">
         <div class="card shadow p-3 mb-5 bg-white rounded">
@@ -63,12 +56,14 @@
                                         {{ $fisio['cpf'] }}
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" href="{{ route('editar-fisio', $fisio['idFisioterapeuta']) }}" type="button">
+                                        <a class="btn btn-warning" href="{{ route('editar-fisio', $fisio['idFisioterapeuta']) }}" type="button">
                                             <i class="fas fa-edit"></i>
+                                            Editar
                                         </a>
                                         <a class="btn btn-danger btnDelete" type="button" data-id="{{ $fisio['idFisioterapeuta'] }}" 
                                             data-toggle="modal" data-target="#modalFisioDelete">
                                             <i class="fas fa-trash-alt"></i>
+                                            Excluir
                                         </a>
                                     </td>
                                 </tr>
@@ -120,48 +115,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-            }
-        });
-        function deletaLinha(idFisio)
-        {
-            idFisio = parseInt(idFisio);
-            var rows = $('#tableFisio>tbody>tr');
-            var row = rows.filter(function(i, element) {
-                return element.cells[0].textContent == idFisio
-            });
-            if (row) {
-                row.remove();
-            }
-            if ($('#tableFisio>tbody>tr').length == 0) {
-                location.reload();
-            }
-        }
-        function deletaFisio(idFisio)
-        {
-            $.ajax({
-                url: '/api/fisio/' + idFisio,
-                type: 'DELETE',
-                context: this,
-                success: function(data) {
-                    deletaLinha(idFisio);
-                }, 
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-        $('.btnDelete').on('click', function() {
-            let idFisio = $(this).data('id');
-            $('#btnDeleteConfirm').attr('data-id', idFisio);
-        });
-        $('#btnDeleteConfirm').on('click', function() {
-            let idFisio = $('button#btnDeleteConfirm').attr('data-id');
-            deletaFisio(idFisio);
-            $('#closeModalDelete').click(); 
-        });
-    </script>
+    <script src="{{ asset('js/consultaFisio.js') }}"></script>
 @endsection

@@ -1,14 +1,7 @@
 @extends('layout._layout')
 
-@section('page', 'Cadastrar')
+@section('page', 'Consultar Paciente')
 
-@section('style')
-    <style>
-        .btnDelete {
-            color: #fff !important; 
-        }
-    </style>
-@endsection
 @section('fisio')
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
@@ -57,18 +50,18 @@
                                 {{ $paciente['cpf'] }}
                             </td>
                             <td>
-                                <a class="btn btn-info" type="button" href="{{ route('editar-paciente', $paciente['idPaciente']) }}">
+                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('editar-paciente', $paciente['idPaciente']) }}">
                                     <i class="fas fa-edit"></i>
                                     Editar
                                 </a>
-                                <a class="btn btn-danger btnDelete" type="button" data-id="{{ $paciente['idPaciente'] }}" 
+                                <a class="btn btn-success btn-sm" type="button" href="{{ route('detalhe-paciente', $paciente['idPaciente']) }}">
+                                    <i class="far fa-id-badge"></i>
+                                    Detalhe/Prontuários
+                                </a>
+                                <a class="btn btn-danger btn-sm btnDelete" type="button" data-id="{{ $paciente['idPaciente'] }}" 
                                     data-toggle="modal" data-target="#modalPacienteDeletar">
                                     <i class="fas fa-trash-alt"></i>
                                     Excluir
-                                </a>
-                                <a class="btn btn-success" type="button" href="{{ route('detalhe-paciente', $paciente['idPaciente']) }}">
-                                    <i class="far fa-id-badge"></i>
-                                    Detalhe
                                 </a>
                             </td>
                     @endforeach
@@ -286,104 +279,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        
-        function getPacienteInput()
-        {
-            var data = new Date();
-            var data_cadastro = 
-                data.getFullYear().toString() + '-' + 
-                data.getMonth().toString() + '-' + 
-                data.getDate().toString();
-
-            var paciente = {
-                nome: $('#pacienteNome').val(),
-                cpf: $('#pacienteCpf').val(),
-                email: $('#pacienteEmail').val(),
-                nascimento: $('#pacienteNascimento').val(),
-                telefone: $('#pacienteTelefone').val(),
-                sexo: $('#pacienteSexo').val(),
-                cidade: $('#pacienteCidade').val(),
-                bairro: $('#pacienteBairro').val(),
-                endereco_residencial: $('#pacienteEnderecoRes').val(),
-                endereco_comercial: $('#pacienteEnderecoComer').val(),
-                estado_civil: $('#pacienteEstadoCivil').val(),
-                naturalidade: $('#pacienteNaturalidade').val(),
-                profissao: $('#pacienteProfissao').val(),
-                data_cadastro: data_cadastro
-            }
-            
-            return paciente
-        }
-        function salvaPaciente(paciente)
-        {
-            $.ajax({
-                url: '/api/pacientes',
-                type: 'POST',
-                data: paciente,
-                dataType: 'json',
-                success: function (data) {
-                    if (data.success)
-                    {
-                        console.log(data);
-                        window.location.replace('/fisio/detalhe-paciente/' + data.success);  
-                    }
-                    if (data.errors) 
-                    {
-                        $('#alertError').removeClass('d-none').addClass('d-block');
-                    } 
-                },
-                error: function (data) {
-                    console.log('error');
-                }
-            });
-        }
-        function deletarLinha(idPaciente)
-        {
-            idPaciente = parseInt(idPaciente);
-            var rows = $('#tabelaPaciente>tbody>tr');
-            var row = rows.filter(function(i, element) {
-                return element.cells[0].textContent == idPaciente
-            });
-            if (row) {
-                row.remove();
-            }
-            if ($('#tabelaPaciente>tbody>tr').length == 0) {
-                location.reload();
-            }
-        }
-        function deletarPaciente(idPaciente)
-        {
-            $.ajax({
-                url: '/api/paciente/' + idPaciente,
-                type: 'DELETE',
-                context: this,
-                success: function(data) {
-                    deletarLinha(idPaciente);
-                }, 
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-        $('.btnDelete').on('click', function() {
-            let idPaciente = $(this).data('id');
-            $('#btnConfirmarDeletar').attr('data-id', idPaciente);
-        });
-        $('#btnConfirmarDeletar').on('click', function() {
-            let idPaciente = $('button#btnConfirmarDeletar').attr('data-id');
-            deletarPaciente(idPaciente);
-            $('#closeModalDelete').click(); 
-        });
-        $('#formPaciente').submit((event) => {
-            event.preventDefault();
-            $('#alertError').removeClass('d-block').addClass('d-none');
-            salvaPaciente(getPacienteInput());
-        });
-    </script>
+    <script src="{{ asset('js/consultaPaciente.js') }}"></script>
 @endsection 
