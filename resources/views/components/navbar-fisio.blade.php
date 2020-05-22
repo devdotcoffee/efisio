@@ -16,6 +16,34 @@
     </ul>
   </div>
   <div>
-    <button class="btn btn-danger">Sair</button>
-  </div>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalSair">
+      Sair
+    </button>
+  </div> 
 </nav>
+<div class="modal fade" id="modalSair" tabindex="-1" 
+        role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">
+                        Tem certeza que deseja sair?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-block" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
+                        Cancelar
+                    </button>
+                    <a  href="{{ route('tela-login') }}" class="btn btn-danger btn-block" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
+                        Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
