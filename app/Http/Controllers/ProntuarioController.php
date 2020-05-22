@@ -77,7 +77,8 @@ class ProntuarioController extends Controller
     {
         $request->validated();
         Prontuario::alterar($id, $request);
-        return redirect()->route('lista-pacientes');
+        $prontuario = Prontuario::getProntuarioById($id);
+        return redirect()->route('detalhe-paciente', $prontuario['idPaciente']);
     }
 
     /**
