@@ -51,3 +51,18 @@ a:hover {
 .btnDelete {
     color: #fff !important;
 }
+#inputPesquisa:focus {
+    border-style: none !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+.input-group {
+    border: 3px solid #5b5b5b;
+    border-radius: 3px;
+}
+.input-group-text {
+    color: #fff;
+    background-color: #5b5b5b;
+    border: none;
+    border-radius: 0;
+}
