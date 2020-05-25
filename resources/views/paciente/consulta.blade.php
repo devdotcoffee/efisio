@@ -101,7 +101,6 @@
                     </p>
                 </div>
                 <form id="formPaciente">
-                    @csrf
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-2">
@@ -279,5 +278,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/consultaPaciente.js') }}"></script>
+    <script type="module"  src="{{ asset('js/consultaPaciente.js') }}"></script>
 @endsection 

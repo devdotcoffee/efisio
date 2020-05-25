@@ -11,7 +11,7 @@
         <a class="nav-link btn-nav" href="{{ route('lista-fisios') }}">Fisioterapeuta</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn-nav" href="{{ route('lista-fisios') }}">Prontuários</a>
+        <a class="nav-link btn-nav" href="{{ route('lista-prontuarios') }}">Prontuários</a>
       </li>
     </ul>
   </div>

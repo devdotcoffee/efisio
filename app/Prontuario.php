@@ -10,11 +10,17 @@ class Prontuario extends Model
     
     public static function todos()
     {
-        return self::all();
+        $prontuarios = new Prontuario();
+        return $prontuarios
+                        ->join('pacientes', 'prontuarios.idPaciente', '=', 'pacientes.idPaciente')
+                        ->join('fisioterapeutas', 'prontuarios.idFisioterapeuta', '=', 'fisioterapeutas.idFisioterapeuta')
+                        ->select('prontuarios.*', 'fisioterapeutas.nome as fisio', 'pacientes.nome as paciente')
+                        ->get();
     }
+
     public static function getProntuarioByPaciente($id)
     {
-        return self::where('idPaciente', $id)->get();
+        return self::where('idPaciente', $id);
     }
     public static function salvar($id, $request)
     {
@@ -42,14 +48,17 @@ class Prontuario extends Model
         $prontuario->plano_terapeutico = $request->input('prontuarioPlanoTer');
         $prontuario->diagnostico_fisioterapeutico = $request->input('prontuarioDiagFisio');
         $prontuario->idPaciente = $id;
-        $prontuario->idFisioterapeuta = 2;
+        $prontuario->idFisioterapeuta = 42;
         $prontuario->save();
     }
 
     public static function getProntuarioById($id)
     {
         return Prontuario::where('idProntuario', $id)
-            ->first();
+        ->join('pacientes', 'prontuarios.idPaciente', '=', 'pacientes.idPaciente')
+        ->join('fisioterapeutas', 'prontuarios.idFisioterapeuta', '=', 'fisioterapeutas.idFisioterapeuta')
+        ->select('prontuarios.*', 'fisioterapeutas.nome as fisio', 'fisioterapeutas.*', 'pacientes.nome as paciente', 'pacientes.*')
+        ->first();
     }
 
     public static function alterar($id, $request)

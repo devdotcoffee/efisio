@@ -217,5 +217,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/pacienteDetalhe.js') }}"></script>
+    <script type="module" src="{{ asset('js/prontuarioDelete.js') }}"></script>
 @endsection

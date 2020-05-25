@@ -1,8 +1,7 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-});
+import {getToken} from './main.js';
+
+getToken();
+
 function deletarProntuario(idProntuario)
 {
     $.ajax({
@@ -24,5 +23,5 @@ $('.btnDelete').on('click', function() {
 $('#btnConfirmarDeletar').on('click', function() {
     let idProntuario = $('button#btnConfirmarDeletar').attr('data-id');
     deletarProntuario(idProntuario);
-    $('#closeModalDelete').click(); 
+    $('#modalDelete').modal('toggle');
 });

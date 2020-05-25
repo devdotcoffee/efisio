@@ -16,7 +16,8 @@ class ProntuarioController extends Controller
      */
     public function index()
     {
-        return Prontuario::todos();
+        $prontuarios = Prontuario::todos();
+        return view('prontuario.consulta', compact('prontuarios'));
     }
 
     /**

@@ -5,9 +5,10 @@
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-header">
             <h3>Lista de Prontuários</h3>
+            {{ $prontuarios }}
         </div>
         <div class="card-body">
-            @if (count($prontuários) > 0)
+            @if (count($prontuarios) > 0)
                 <div class="mb-2">
                     <form>
                         <div class="input-group mb-2 w-100">
@@ -51,15 +52,23 @@
                                     {{ $prontuario['paciente'] }}
                                 </td>
                                 <td>
-                                    {{ $prontuario['fisioterapeuta'] }}
+                                    {{ $prontuario['fisio'] }}
                                 </td>
                                 <td>
-                                    <a class="btn btn-warning" href="{{ route('editar-fisio', $fisio['idFisioterapeuta']) }}" type="button">
+                                    <a class="btn btn-warning btn-sm" href="{{ route('editar-prontuario', $prontuario['idProntuario']) }}" type="button">
                                         <i class="fas fa-edit"></i>
                                         Editar
                                     </a>
-                                    <a class="btn btn-danger btnDelete" type="button" data-id="{{ $fisio['idFisioterapeuta'] }}" 
-                                        data-toggle="modal" data-target="#modalFisioDelete">
+                                    <a class="btn btn-success btn-sm" href="{{ route('lista-evolucoes', $prontuario['idProntuario']) }}">
+                                        <i class="fas fa-book-open"></i>
+                                        Detalhe/Evoluções
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="{{ route('pdf-prontuario', $prontuario['idProntuario']) }}">
+                                        <i class="fas fa-file-download"></i>
+                                        PDF
+                                    </a>
+                                    <a class="btn btn-danger btn-sm btnDelete" type="button" data-id="{{ $prontuario['idProntuario'] }}" 
+                                        data-toggle="modal" data-target="#modalDelete">
                                         <i class="fas fa-trash-alt"></i>
                                         Excluir
                                     </a>
@@ -76,14 +85,9 @@
                 </div>
             @endif
         </div>
-        <div class="card-footer">
-            <a type="button" class="btn btn-dark" href="{{ route('cadastro-fisio') }}">
-                + Fisio
-            </a>
-        </div>
     </div>
 </div>
-<div class="modal fade" id="modalFisioDelete" tabindex="-1" 
+<div class="modal fade" id="modalDelete" tabindex="-1" 
     role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -102,11 +106,15 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
                     Cancelar
                 </button>
-                <button class="btn btn-danger" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
+                <button class="btn btn-danger" type="button" aria-label="Deletar" id="btnConfirmarDeletar" data-id="">
                     Deletar
                 </button>
             </div>
         </div>
     </div>
-</div>
+</div>    
+@endsection
+
+@section('js')
+    <script type="module" src="{{ asset('js/prontuarioDelete.js') }}"></script>
 @endsection
