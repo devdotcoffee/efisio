@@ -1,15 +1,13 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-});
+import {getToken} from './main.js';
+
+getToken();
 
 function getPacienteInput()
 {
     var data = new Date();
     var data_cadastro = 
         data.getFullYear().toString() + '-' + 
-        data.getMonth().toString() + '-' + 
+        (data.getMonth()+1).toString() + '-' + 
         data.getDate().toString();
 
     var paciente = {
@@ -89,7 +87,7 @@ $('.btnDelete').on('click', function() {
 $('#btnConfirmarDeletar').on('click', function() {
     let idPaciente = $('button#btnConfirmarDeletar').attr('data-id');
     deletarPaciente(idPaciente);
-    $('#closeModalDelete').click(); 
+    $('#modalPacienteDeletar').modal('toggle'); 
 });
 $('#formPaciente').submit((event) => {
     event.preventDefault();
