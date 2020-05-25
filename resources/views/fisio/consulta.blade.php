@@ -81,7 +81,7 @@
             </div>
             <div class="card-footer">
                 <a type="button" class="btn btn-dark" href="{{ route('cadastro-fisio') }}">
-                    + Fisio
+                    Cadastrar Fisio
                 </a>
             </div>
         </div>

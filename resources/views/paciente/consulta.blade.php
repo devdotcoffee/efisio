@@ -56,7 +56,7 @@
                                 </a>
                                 <a class="btn btn-success btn-sm" type="button" href="{{ route('detalhe-paciente', $paciente['idPaciente']) }}">
                                     <i class="far fa-id-badge"></i>
-                                    Detalhe/Prontuários
+                                    Detalhes/Prontuários
                                 </a>
                                 <a class="btn btn-danger btn-sm btnDelete" type="button" data-id="{{ $paciente['idPaciente'] }}" 
                                     data-toggle="modal" data-target="#modalPacienteDeletar">
@@ -77,7 +77,7 @@
         </div>
         <div class="card-footer">
             <a type="button" class="btn btn-dark" data-toggle="modal" data-target="#cadastroPaciente">
-                + Paciente
+                Cadastrar Paciente
             </a>
         </div>
     </div>

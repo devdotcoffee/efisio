@@ -156,7 +156,7 @@
                                 </a>
                                 <a class="btn btn-success btn-sm" href="{{ route('lista-evolucoes', $prontuario['idProntuario']) }}">
                                     <i class="fas fa-book-open"></i>
-                                    Detalhe/Evoluções
+                                    Detalhes/Evoluções
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="">
                                     <i class="fas fa-file-download"></i>
@@ -182,7 +182,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('cadastro-prontuario', $paciente['idPaciente']) }}" type="button" class="btn btn-dark">
-                + Prontuários
+                Cadastrar Prontuário
             </a>
         </div>
     </div>

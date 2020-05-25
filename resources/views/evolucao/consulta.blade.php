@@ -296,7 +296,7 @@
         </div>
         <div class="card-footer">
             <a type="button" class="btn btn-dark" href="{{ route('cadastro-evolucao', $prontuario['idProntuario']) }}">
-                + Evolução
+                Cadastrar Evolução
             </a>
         </div>
     </div>
