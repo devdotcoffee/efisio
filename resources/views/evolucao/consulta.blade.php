@@ -331,5 +331,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/consultaEvolucao.js') }}"></script>
+    <script type="module" src="{{ asset('js/consultaEvolucao.js') }}"></script>
 @endsection
