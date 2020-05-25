@@ -53,6 +53,9 @@ Route::prefix('fisio')->group(function () {
     
     Route::get('prontuario/{id}', 'ProntuarioController@create')
         ->name('cadastro-prontuario');
+    
+    Route::get('lista-prontuarios', 'ProntuarioController@index')
+        ->name('lista-prontuarios');
 
     Route::post('prontuario/{id}', 'ProntuarioController@store')
         ->name('post-cadastro-prontuario');
@@ -83,3 +86,6 @@ Route::prefix('paciente')->group(function () {
     Route::get('/', 'PacienteController@home')
         ->name('paciente.home');
 });
+
+Route::get('pdf-prontuario/{id}', 'PdfController@builderProntuario')
+    ->name('pdf-prontuario');
