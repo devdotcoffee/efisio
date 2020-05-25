@@ -115,5 +115,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/consultaFisio.js') }}"></script>
+    <script type="module" src="{{ asset('js/consultaFisio.js') }}"></script>
 @endsection
