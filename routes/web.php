@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('login');
 })->name('tela-login');
 
-Auth::routes();
-
+Route::post('/login','Auth\LoginFisioController@login')->name('login');
 Route::prefix('fisio')->group(function () {
+    Route::namespace('Auth')->group(function(){
+        
+        //Login Routes
+        Route::get('/login','LoginFisioController@loginForm');
+        Route::post('/logout','LoginController@logout')->name('logout');
+    
+    });
+    
     Route::get('/', 'FisioController@home')
         ->name('fisio.home');
         
