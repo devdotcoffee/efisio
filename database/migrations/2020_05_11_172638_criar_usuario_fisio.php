@@ -16,7 +16,7 @@ class CriarUsuarioFisio extends Migration
         Schema::create('usuario_fisio', function (Blueprint $table) {
             $table->bigIncrements('idUsuarioFisio');
             $table->string('crefito', 50)->nullable();
-            $table->string('senha', 100);
+            $table->string('password', 255);
             $table->unsignedBigInteger('idFisioterapeuta');
             $table->foreign('idFisioterapeuta')
                 ->references('idFisioterapeuta')

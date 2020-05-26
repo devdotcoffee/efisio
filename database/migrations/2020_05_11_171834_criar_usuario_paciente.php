@@ -16,7 +16,7 @@ class CriarUsuarioPaciente extends Migration
         Schema::create('usuario_paciente', function (Blueprint $table) {
             $table->bigIncrements('idUsuarioPaciente');
             $table->string('cpf', 30)->nullable();
-            $table->string('senha', 100);
+            $table->string('password', 255);
             $table->unsignedBigInteger('idPaciente');
             $table->foreign('idPaciente')
                 ->references('idPaciente')
