@@ -36,7 +36,7 @@
                     <h6>CPF:</h6>
                     <p>{{ $paciente['cpf'] }}</p>
                     <h6>Data de Nascimento:</h6>
-                    <p>{{ $paciente['data_nascimento'] }}</p>
+                    <p>{{ date('d/m/Y', strtotime($paciente['data_nascimento'])) }}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h6>Telefone:</h6>
@@ -66,7 +66,7 @@
                     <h6>Data do Cadastro:</h6>
                     <p>
                         @if($paciente['data_cadastro'])
-                            {{ $paciente['data_cadastro'] }}
+                            {{ date('d/m/Y', strtotime($paciente['data_cadastro'])) }}
                         @else
                             Não informado
                         @endif
@@ -127,7 +127,7 @@
                     <input type="text" class="form-control" id="inputPesquisa" placeholder="Pesquise...">
                 </div>
             </form>
-            @if (count($prontuarios) > 0)
+            @if (!empty($prontuarios))
                 <table class="table table-sm table-hover table-bordered">
                     <thead>
                         <th>
@@ -147,7 +147,7 @@
                                 {{ $prontuario['idProntuario'] }}
                             </td>
                             <td>
-                                {{ $prontuario['data'] }}
+                                {{ date('d/m/Y', strtotime($prontuario['data'])) }}
                             </td>
                             <td>
                                 <a class="btn btn-warning btn-sm" type="button" href="{{ route('editar-prontuario', $prontuario['idProntuario']) }}">
@@ -158,7 +158,7 @@
                                     <i class="fas fa-book-open"></i>
                                     Detalhes/Evoluções
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="">
+                                <a class="btn btn-danger btn-sm" href="{{ route('pdf-prontuario', $prontuario['idProntuario']) }}">
                                     <i class="fas fa-file-download"></i>
                                     PDF
                                 </a>

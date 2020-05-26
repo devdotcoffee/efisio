@@ -269,7 +269,7 @@
                                     {{ $evolucao['idEvolucao'] }}
                                 </td>
                                 <td>
-                                    {{ $evolucao['data'] }}
+                                    {{ date('d/m/Y', strtotime($evolucao['data'])) }}
                                 </td>
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="{{ route('editar-evolucao', $evolucao['idEvolucao']) }}" type="button">

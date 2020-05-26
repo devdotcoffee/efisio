@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PDF</title>
+    <title>{{ $prontuario['data'] }}</title>
     <style>
         * {
             font-family: Arial, Helvetica, sans-serif;
@@ -24,17 +24,29 @@
     </style>
 </head>
 <body>
-    <h1>Prontuário - N° {{ $prontuario['idProntuario'] }}</h1>
-    <h5>Data - {{ date("d/m/Y", strtotime($prontuario['data'])) }}</h5>
-    <h5>Fisioterapeuta: {{ $prontuario['fisio'] }} - CREFITO: {{ $prontuario['crefito'] }}</h5>
+    <h1>
+        Prontuário - N° {{ $prontuario['idProntuario'] }}
+    </h1>
+    <h5>
+        Data - {{ date("d/m/Y", strtotime($prontuario['data'])) }}
+    </h5>
+    <h5>
+        Fisioterapeuta: {{ $prontuario['fisio'] }} - CREFITO: {{ $prontuario['crefito'] }}
+    </h5>
     <hr>
-    <h4>Paciente: {{ $prontuario['paciente'] }} - Cadastro: {{ date("d/m/Y", strtotime($prontuario['data_cadastro'])) }}</h4>
-    <h5>CPF: {{ $prontuario['cpf'] }} | Telefone: {{ $prontuario['telefone'] }} | E-mail: {{ $prontuario['email'] }}</h5>
+    <h4>
+        Paciente: {{ $prontuario['paciente'] }} - Cadastro: {{ date("d/m/Y", strtotime($prontuario['data_cadastro'])) }}
+    </h4>
+    <h5>
+        CPF: {{ $prontuario['cpf'] }} | Telefone: {{ $prontuario['telefone'] }} | E-mail: {{ $prontuario['email'] }}
+    </h5>
     <hr>
-    <h2>Avaliação:</h2>
+    <h2>
+        Avaliação:
+    </h2>
     <div class="my-5">
-        <h4 class="in-line">Diagnóstico Clínico:</h4>
-        <p class="in-line">
+        <h4>Diagnóstico Clínico:</h4>
+        <p>
             @if ($prontuario['diagnostico_clinico'])
                 {{ $prontuario['diagnostico_clinico'] }}
             @else
@@ -43,8 +55,8 @@
         </p>
     </div>
     <div class="my-5">
-        <h4 class="in-line">História Clínica:</h4>
-        <p class="in-line">
+        <h4>História Clínica:</h4>
+        <p>
             @if ($prontuario['historia_clinica'])
                 {{ $prontuario['historia_clinica'] }}
             @else
@@ -53,8 +65,8 @@
         </p>
     </div>
     <div class="my-5">
-        <h4 class="in-line">Queixa Principal do Paciente:</h4>
-        <p class="in-line">
+        <h4>Queixa Principal do Paciente:</h4>
+        <p>
             @if ($prontuario['queixa_principal'])
                 {{ $prontuario['queixa_principal'] }}
             @else
@@ -248,12 +260,14 @@
     </div>
     <hr>
     <h1>Evoluções:</h1>
-    @if (empty($evolucoes))
+    @if (!empty($evolucoes))
         @foreach ($evolucoes as $evolucao)
-            <h2>N° - {{ $evolucao['idEvolucao'] }}</h2>
+            <h3>Evolução N° - {{ $evolucao['idEvolucao'] }} - Data: {{ date("d/m/Y", strtotime($evolucao['data'])) }}</h3>
             <div class="my-5">
                 <h4>Descrição:</h4>
-                <p>{{ $evolucao['descricao'] }}</p>
+                <p>
+                    {{ $evolucao['descricao'] }}
+                </p>
             </div>
         @endforeach
     @else

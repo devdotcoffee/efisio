@@ -16,7 +16,7 @@ class PdfController extends Controller
 
         $pdf = PDF::loadView('pdf.prontuario', ['prontuario' => $prontuario, 'evolucoes' => $evolucoes]);
         
-        return $pdf->setPaper('a4')->stream('prontuario.pdf');
+        return $pdf->setPaper('a4')->stream($prontuario['data'].'.pdf');
     }
 
 }

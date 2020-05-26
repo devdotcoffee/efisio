@@ -1,6 +1,6 @@
 @extends('layout._layout')
 
-@section('page', 'Editar Paciente')
+@section('page', 'Paciente - Editar')
 
 @section('fisio')
 <div class="container">

@@ -5,7 +5,6 @@
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-header">
             <h3>Lista de Prontuários</h3>
-            {{ $prontuarios }}
         </div>
         <div class="card-body">
             @if (count($prontuarios) > 0)
@@ -46,7 +45,7 @@
                                     {{ $prontuario['idProntuario'] }}
                                 </td>
                                 <td>
-                                    {{ $prontuario['data'] }}
+                                    {{ date('d/m/Y', strtotime($prontuario['data'])) }}
                                 </td>
                                 <td>
                                     {{ $prontuario['paciente'] }}

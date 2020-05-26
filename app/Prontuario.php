@@ -20,7 +20,7 @@ class Prontuario extends Model
 
     public static function getProntuarioByPaciente($id)
     {
-        return self::where('idPaciente', $id);
+        return self::where('idPaciente', $id)->get();
     }
     public static function salvar($id, $request)
     {
@@ -48,7 +48,7 @@ class Prontuario extends Model
         $prontuario->plano_terapeutico = $request->input('prontuarioPlanoTer');
         $prontuario->diagnostico_fisioterapeutico = $request->input('prontuarioDiagFisio');
         $prontuario->idPaciente = $id;
-        $prontuario->idFisioterapeuta = 42;
+        $prontuario->idFisioterapeuta = 1;
         $prontuario->save();
     }
 

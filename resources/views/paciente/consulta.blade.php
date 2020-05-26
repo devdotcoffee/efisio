@@ -1,6 +1,6 @@
 @extends('layout._layout')
 
-@section('page', 'Consultar Paciente')
+@section('page', 'Paciente - Consulta')
 
 @section('fisio')
 <div class="container">
@@ -9,7 +9,7 @@
             <h3>Lista de Paciente</h1>
         </div>
         <div class="card-body">
-            @if (count($pacientes) > 0)
+            @if (!empty($pacientes))
             <div class="mb-2">
                 <form>
                     <div class="input-group mb-2 w-100">
@@ -100,6 +100,7 @@
                         Preencha todos os campos obrigatórios.
                     </p>
                 </div>
+                <p style="font-size: 14pt; font-weight: bold; text-align: center">Campos com (<i class="important">*</i>) são obrigatórios.</p>
                 <form id="formPaciente">
                     <div class="form-group">
                         <div class="form-row">
