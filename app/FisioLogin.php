@@ -9,8 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class FisioLogin extends Authenticatable
 {
     use Notifiable;
-
-    protected $table = "fisio_usuario";
+    protected $primaryKey = 'idUsuarioFisio';
+    protected $table = "usuario_fisio";
     /**
      * The attributes that are mass assignable.
      *
