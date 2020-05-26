@@ -6,25 +6,25 @@ function getPacienteInput()
 {
     var data = new Date();
     var data_cadastro = 
-        data.getFullYear().toString() + '-' + 
-        (data.getMonth()+1).toString() + '-' + 
+        data.getFullYear().toString()   + '-' + 
+        (data.getMonth()+1).toString()  + '-' + 
         data.getDate().toString();
 
     var paciente = {
-        nome: $('#pacienteNome').val(),
-        cpf: $('#pacienteCpf').val(),
-        email: $('#pacienteEmail').val(),
-        nascimento: $('#pacienteNascimento').val(),
-        telefone: $('#pacienteTelefone').val(),
-        sexo: $('#pacienteSexo').val(),
-        cidade: $('#pacienteCidade').val(),
-        bairro: $('#pacienteBairro').val(),
-        endereco_residencial: $('#pacienteEnderecoRes').val(),
-        endereco_comercial: $('#pacienteEnderecoComer').val(),
-        estado_civil: $('#pacienteEstadoCivil').val(),
-        naturalidade: $('#pacienteNaturalidade').val(),
-        profissao: $('#pacienteProfissao').val(),
-        data_cadastro: data_cadastro
+        nome                    :   $('#pacienteNome').val(),
+        cpf                     :   $('#pacienteCpf').val(),
+        email                   :   $('#pacienteEmail').val(),
+        nascimento              :   $('#pacienteNascimento').val(),
+        telefone                :   $('#pacienteTelefone').val(),
+        sexo                    :   $('#pacienteSexo').val(),
+        cidade                  :   $('#pacienteCidade').val(),
+        bairro                  :   $('#pacienteBairro').val(),
+        endereco_residencial    :   $('#pacienteEnderecoRes').val(),
+        endereco_comercial      :   $('#pacienteEnderecoComer').val(),
+        estado_civil            :   $('#pacienteEstadoCivil').val(),
+        naturalidade            :   $('#pacienteNaturalidade').val(),
+        profissao               :   $('#pacienteProfissao').val(),
+        data_cadastro           :   data_cadastro
     }
     
     return paciente
@@ -39,7 +39,6 @@ function salvaPaciente(paciente)
         success: function (data) {
             if (data.success)
             {
-                console.log(data);
                 window.location.replace('/fisio/detalhe-paciente/' + data.success);  
             }
             if (data.errors) 

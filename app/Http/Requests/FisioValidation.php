@@ -24,20 +24,22 @@ class FisioValidation extends FormRequest
     public function rules()
     {
         return [
-            'fisioNome' => 'required',
-            'fisioNascimento' => 'required',
-            'fisioCpf' => 'required',
-            'fisioCrefito' => 'required'
+            'fisioNome'         => 'required',
+            'fisioNascimento'   => 'required',
+            'fisioCpf'          => 'required',
+            'fisioCrefito'      => 'required'
         ];
     }
 
     public function messages() 
     {
         return [
-            'fisioNome.required' => 'O nome é obrigatório',
-            'fisioNascimento.required' => 'A data de nascimento é obrigatória',
-            'fisioCpf.required' => 'O CPF é obrigatório',
-            'fisioCrefito.required' => 'O n° CREFITO é obrigatório'
+            'fisioNome.required'        => 'O nome é obrigatório',
+            'fisioNascimento.required'  => 'A data de nascimento é obrigatória',
+            'fisioCpf.required'         => 'O CPF é obrigatório',
+            'fisioCpf.unique'           => 'Esse CPF já existe',
+            'fisioCrefito.required'     => 'O n° CREFITO é obrigatório',
+            'fisioCrefito.unique'       => 'Esse CREFITO já existe'
         ];
     }
 }

@@ -16,10 +16,10 @@ class Fisio extends Model
     public static function salvar($request)
     {
         $fisio = new Fisio();
-        $fisio->nome = $request->input('fisioNome');
+        $fisio->nome            = $request->input('fisioNome');
         $fisio->data_nascimento = $request->input('fisioNascimento');
-        $fisio->crefito = $request->input('fisioCrefito');
-        $fisio->cpf = $request->input('fisioCpf');
+        $fisio->crefito         = $request->input('fisioCrefito');
+        $fisio->cpf             = $request->input('fisioCpf');
         $fisio->save();
 
         return $fisio;
