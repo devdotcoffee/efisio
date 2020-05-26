@@ -1,6 +1,6 @@
 @extends('layout._layout')
 
-@section('page', 'Detalhe Paciente')
+@section('page', 'Paciente - Detalhe')
     
 @section('style')
     <style>
@@ -127,7 +127,7 @@
                     <input type="text" class="form-control" id="inputPesquisa" placeholder="Pesquise...">
                 </div>
             </form>
-            @if (!empty($prontuarios))
+            @if (count($prontuarios) > 0)
                 <table class="table table-sm table-hover table-bordered">
                     <thead>
                         <th>

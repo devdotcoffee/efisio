@@ -260,7 +260,7 @@
     </div>
     <hr>
     <h1>Evoluções:</h1>
-    @if (!empty($evolucoes))
+    @if (count($evolucoes) > 0)
         @foreach ($evolucoes as $evolucao)
             <h3>Evolução N° - {{ $evolucao['idEvolucao'] }} - Data: {{ date("d/m/Y", strtotime($evolucao['data'])) }}</h3>
             <div class="my-5">

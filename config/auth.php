@@ -117,6 +117,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'fisios' => [
+            'provider' => 'fisios',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
 
 ];
