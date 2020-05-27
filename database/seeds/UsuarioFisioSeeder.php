@@ -14,6 +14,7 @@ class UsuarioFisioSeeder extends Seeder
     {
         DB::table('usuario_fisio')->insert([
             'crefito'           => '444-GG',
+            'permissao'         => 'Owner',
             'password'          => Hash::make('123'),
             'idFisioterapeuta'  => 1
         ]);
