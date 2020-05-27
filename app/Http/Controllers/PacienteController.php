@@ -104,12 +104,14 @@ class PacienteController extends Controller
     public function storeAJAX(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'nome' => 'required',
-            'cpf' => 'required',
-            'nascimento' => 'required',
-            'telefone' => 'required',
-            'sexo' => 'required',
-            'email' => 'required',
+            'nome'          => 'required',
+            'cpf'           => 'required',
+            'nascimento'    => 'required',
+            'telefone'      => 'required',
+            'sexo'          => 'required',
+            'cidade'        => 'required',
+            'bairro'        => 'required',
+            'email'         => 'required',
             'data_cadastro' => 'required'
         ]);
 

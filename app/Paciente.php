@@ -25,12 +25,13 @@ class Paciente extends Model
         $paciente->bairro               = $request->bairro;
         $paciente->endereco_comercial   = $request->endereco_comercial;
         $paciente->endereco_residencial = $request->endereco_residencial;
+        $paciente->estado_civil         = $request->estado_civil;
         $paciente->profissao            = $request->profissao;
         $paciente->naturalidade         = $request->naturalidade;
         $paciente->data_cadastro        = $request->data_cadastro;
         $paciente->save();
 
-        MailController::send($paciente);
+        //MailController::send($paciente);
         return $paciente;
     }
 
