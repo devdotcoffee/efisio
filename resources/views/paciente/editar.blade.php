@@ -9,6 +9,7 @@
             <h3>Editar dados - {{ $paciente['nome'] }}</h3>
         </div>
         <div class="card-body">
+            <p class="important-field">Campos com (<i class="important">*</i>) são obrigatórios.</p>
             <form method="POST" action="{{ route('editar-cadastro-paciente', $paciente['idPaciente']) }}" id="formPaciente">
                 @csrf
                 @method('PUT')
@@ -104,9 +105,13 @@
                             <label for="pacienteSexo">Sexo</label>
                         </div>
                         <div class="col-3">
-                            <select name="pacienteSexo" id="pacienteSexo" class="form-control">
-                                <option value="M">M</option>
-                                <option value="F">F</option>
+                                <select name="pacienteSexo" id="pacienteSexo" class="form-control" value="{{ $paciente['sexo'] }}">
+                                <option value="Masculino" >
+                                    Masculino
+                                </option>
+                                <option value="Feminino">
+                                    Feminino
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -114,20 +119,30 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-4">
-                            <label for="pacienteCidade">Cidade:</label>
+                            <label for="pacienteCidade">Cidade:<sup class="important">*</sup></label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
+                            <input class="form-control @error('pacienteCidade') is-invalid @enderror" type="text" name="pacienteCidade" id="pacienteCidade" value="{{ $paciente['cidade'] }}">
+                            @error('pacienteCidade')
+                                <small class="form-text text-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-4">
-                            <label for="pacienteBairro">Bairro:</label>
+                            <label for="pacienteBairro">Bairro:<sup class="important">*</sup></label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
+                            <input class="form-control @error('pacienteBairro') is-invalid @enderror" type="text" name="pacienteBairro" id="pacienteBairro" value="{{ $paciente['bairro'] }}">
+                            @error('pacienteBairro')
+                                <small class="form-text text-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -137,7 +152,7 @@
                             <label for="pacienteEnderecoRes">Endereço Residencial:</label>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="pacienteEnderecoRes" id="pacienteEnderecoRes">
+                            <input type="text" class="form-control" name="pacienteEnderecoRes" id="pacienteEnderecoRes" value="{{ $paciente['endereco_residencial'] }}">
                         </div>
                     </div>
                 </div>
@@ -147,7 +162,7 @@
                             <label for="pacienteEnderecoComer">Endereço Comercial:</label>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="pacienteEnderecoComer" id="pacienteEnderecoComer">
+                            <input type="text" class="form-control" name="pacienteEnderecoComer" id="pacienteEnderecoComer" value="{{ $paciente['endereco_comercial'] }}">
                         </div>
                     </div>
                 </div>
@@ -157,7 +172,7 @@
                             <label for="pacienteEstadoCivil">Estado Civil:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil">
+                            <input class="form-control required" type="text" name="pacienteEstadoCivil" id="pacienteEstadoCivil" value="{{ $paciente['estado_civil'] }}">
                         </div>
                     </div>
                 </div>
@@ -167,7 +182,7 @@
                             <label for="pacienteNaturalidade">Naturalidade:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control" type="text" name="pacienteNaturalidade" id="pacienteNaturalidade">
+                            <input class="form-control" type="text" name="pacienteNaturalidade" id="pacienteNaturalidade" value="{{ $paciente['naturalidade'] }}">
                         </div>
                     </div>
                 </div>
@@ -177,7 +192,7 @@
                             <label for="pacienteProfissao">Profissão:</label>
                         </div>
                         <div class="col-6">
-                            <input class="form-control" type="text" name="pacienteProfissao" id="pacienteProfissao">
+                            <input class="form-control" type="text" name="pacienteProfissao" id="pacienteProfissao" value="{{ $paciente['profissao'] }}">
                         </div>
                     </div>
                 </div>

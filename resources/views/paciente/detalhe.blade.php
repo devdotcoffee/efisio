@@ -63,6 +63,14 @@
                             Não informado
                         @endif
                     </p>
+                    <h6>Estado Civil:</h6>
+                    <p>
+                        @if($paciente['estado_civil'])
+                            {{ $paciente['estado_civil'] }}
+                        @else
+                            Não informado
+                        @endif
+                    </p>
                     <h6>Data do Cadastro:</h6>
                     <p>
                         @if($paciente['data_cadastro'])

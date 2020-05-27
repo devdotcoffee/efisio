@@ -34,6 +34,9 @@
                         CPF
                     </th>
                     <th>
+                        Email
+                    </th>
+                    <th>
                         Ações
                     </th>
                 </thead>
@@ -48,6 +51,9 @@
                             </td>
                             <td>
                                 {{ $paciente['cpf'] }}
+                            </td>
+                            <td>
+                                {{ $paciente['email'] }}
                             </td>
                             <td>
                                 <a class="btn btn-warning btn-sm" type="button" href="{{ route('editar-paciente', $paciente['idPaciente']) }}">
@@ -100,7 +106,7 @@
                         Preencha todos os campos obrigatórios.
                     </p>
                 </div>
-                <p style="font-size: 14pt; font-weight: bold; text-align: center">Campos com (<i class="important">*</i>) são obrigatórios.</p>
+                <p class="important-field">Campos com (<i class="important">*</i>) são obrigatórios.</p>
                 <form id="formPaciente">
                     <div class="form-group">
                         <div class="form-row">
@@ -161,12 +167,13 @@
                                 <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
                             </div>
                             <div class="col-2 d-flex">
-                                <label for="pacienteSexo">Sexo</label>
+                                <label for="pacienteSexo">Sexo:<sup class="important">*</sup></label>
                             </div>
                             <div class="col-3">
                                 <select name="pacienteSexo" id="pacienteSexo" class="form-control">
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
+                                    <option value selected disabled>Selecionar sexo</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
                                 </select>
                             </div>
                         </div>
@@ -174,7 +181,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-4">
-                                <label for="pacienteCidade">Cidade:</label>
+                                <label for="pacienteCidade">Cidade:<sup class="important">*</sup></label>
                             </div>
                             <div class="col-6">
                                 <input class="form-control required" type="text" name="pacienteCidade" id="pacienteCidade">
@@ -184,7 +191,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-4">
-                                <label for="pacienteBairro">Bairro:</label>
+                                <label for="pacienteBairro">Bairro:<sup class="important">*</sup></label>
                             </div>
                             <div class="col-6">
                                 <input class="form-control required" type="text" name="pacienteBairro" id="pacienteBairro">
