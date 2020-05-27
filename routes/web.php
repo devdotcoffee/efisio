@@ -96,3 +96,5 @@ Route::prefix('paciente')->group(function () {
 
 Route::get('pdf-prontuario/{id}', 'PdfController@builderProntuario')
     ->name('pdf-prontuario');
+
+Route::get('/sendmail', 'MailController@send')->name('send-mail');

@@ -9,7 +9,7 @@
             <h3>Cadastro de Fisioterapeuta</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('post-cadastro-fisio') }}" method="POST">
+            <form action="{{ route('post-cadastro-fisio') }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="form-group">
                     <div class="form-row">
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-6">
-                            <input class="form-control @error('fisioCrefito') is-invalid @enderror" type="text" name="fisioCrefito" id="fisioCrefito" value="{{ old('fisioCrefito') }}">
+                            <input class="form-control @error('fisioCrefito') is-invalid @enderror" type="text" name="fisioCrefito" id="fisioCrefito" value="{{ old('fisioCrefito') }}" autocomplete="off">
                             @error('fisioCrefito')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -62,8 +62,27 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <input class="form-control @error('fisioCpf') is-invalid @enderror" type="text" name="fisioCpf" id="fisioCpf" value="{{ old('fisioCpf') }}">
+                            <input class="form-control @error('fisioCpf') is-invalid @enderror" type="text" name="fisioCpf" id="fisioCpf" value="{{ old('fisioCpf') }}" autocomplete="off">
                             @error('fisioCpf')
+                                <small class="form-text tex-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="fisioSenha">Senha:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <input class="form-control @error('password') is-invalid @enderror " type="password" name="password" id="fisioSenha" value="{{ old('password') }}">
+                            @error('password')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
                                 </small>

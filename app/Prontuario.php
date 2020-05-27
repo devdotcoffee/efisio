@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Prontuario extends Model
 {
@@ -48,7 +49,7 @@ class Prontuario extends Model
         $prontuario->plano_terapeutico              = $request->input('prontuarioPlanoTer');
         $prontuario->diagnostico_fisioterapeutico   = $request->input('prontuarioDiagFisio');
         $prontuario->idPaciente                     = $id;
-        $prontuario->idFisioterapeuta               = 1;
+        $prontuario->idFisioterapeuta               = Auth::guard('fisio')->user()->idFisioterapeuta;
         $prontuario->save();
     }
 

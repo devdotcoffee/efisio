@@ -105,7 +105,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
                         Cancelar
                     </button>
-                    <button class="btn btn-danger" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
+                    <button class="btn btn-danger btnDeleteConfirm" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
                         Deletar
                     </button>
                 </div>

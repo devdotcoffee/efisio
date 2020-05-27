@@ -72,6 +72,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="fisioSenha">Senha:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <input class="form-control @error('password') is-invalid @enderror " type="password" name="password" id="fisioSenha" value="{{ old('password') }}">
+                            @error('password')
+                                <small class="form-text tex-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
                 <button class="btn btn-dark" type="submit">
                     Editar
                 </button>

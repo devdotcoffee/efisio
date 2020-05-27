@@ -2,6 +2,8 @@ import {getToken} from './main.js';
 
 getToken();
 
+console.log('load');
+
 function deletaLinha(idFisio)
 {
     idFisio = parseInt(idFisio);
@@ -32,10 +34,10 @@ function deletaFisio(idFisio)
 }
 $('.btnDelete').on('click', function() {
     let idFisio = $(this).data('id');
-    $('#btnDeleteConfirm').attr('data-id', idFisio);
+    $('.btnDeleteConfirm').attr('data-id', idFisio);
 });
-$('#btnDeleteConfirm').on('click', function() {
-    let idFisio = $('button#btnDeleteConfirm').attr('data-id');
+$('.btnDeleteConfirm').on('click', function() {
+    let idFisio = $('button.btnDeleteConfirm').attr('data-id');
     deletaFisio(idFisio);
-    $('#closeModalDelete').click(); 
+    $('#modalFisioDelete').modal('toggle'); 
 });

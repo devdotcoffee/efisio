@@ -27,7 +27,8 @@ class FisioValidation extends FormRequest
             'fisioNome'         => 'required',
             'fisioNascimento'   => 'required',
             'fisioCpf'          => 'required',
-            'fisioCrefito'      => 'required'
+            'fisioCrefito'      => 'required',
+            'password'          => 'required'
         ];
     }
 
@@ -39,7 +40,8 @@ class FisioValidation extends FormRequest
             'fisioCpf.required'         => 'O CPF é obrigatório',
             'fisioCpf.unique'           => 'Esse CPF já existe',
             'fisioCrefito.required'     => 'O n° CREFITO é obrigatório',
-            'fisioCrefito.unique'       => 'Esse CREFITO já existe'
+            'fisioCrefito.unique'       => 'Esse CREFITO já existe',
+            'password'                  => 'A senha é necessária'
         ];
     }
 }

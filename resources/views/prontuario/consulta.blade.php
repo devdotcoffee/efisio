@@ -1,5 +1,7 @@
 @extends('layout._layout')
 
+@section('page', 'Prontuário - Consulta')
+    
 @section('fisio')
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">

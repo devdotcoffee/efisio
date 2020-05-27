@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\MailController;
 
 class Paciente extends Model
 {
@@ -29,6 +30,7 @@ class Paciente extends Model
         $paciente->data_cadastro        = $request->data_cadastro;
         $paciente->save();
 
+        MailController::send($paciente);
         return $paciente;
     }
 

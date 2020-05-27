@@ -9,7 +9,7 @@
             <h3>Lista de Paciente</h1>
         </div>
         <div class="card-body">
-            @if (!empty($pacientes))
+            @if (count($pacientes) > 0)
             <div class="mb-2">
                 <form>
                     <div class="input-group mb-2 w-100">

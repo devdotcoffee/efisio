@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\FisioLogin;
 
 class Fisio extends Model
 {
@@ -21,6 +22,8 @@ class Fisio extends Model
         $fisio->crefito         = $request->input('fisioCrefito');
         $fisio->cpf             = $request->input('fisioCpf');
         $fisio->save();
+
+        FisioLogin::salvar($fisio->crefito, $request->input('password'), $fisio->id);
 
         return $fisio;
     }

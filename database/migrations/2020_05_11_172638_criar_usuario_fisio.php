@@ -17,6 +17,7 @@ class CriarUsuarioFisio extends Migration
             $table->bigIncrements('idUsuarioFisio');
             $table->string('crefito', 50)->nullable();
             $table->string('password', 255);
+            $table->string('permissao', 50);
             $table->unsignedBigInteger('idFisioterapeuta');
             $table->foreign('idFisioterapeuta')
                 ->references('idFisioterapeuta')
