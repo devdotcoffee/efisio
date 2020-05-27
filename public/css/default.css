@@ -66,3 +66,11 @@ a:hover {
     border: none;
     border-radius: 0;
 }
+.important-field {
+    font-size: 14pt; 
+    font-weight: bold; 
+    text-align: center;
+}
+.error-message {
+    color: #ff0000 !important;
+}
