@@ -106,10 +106,10 @@
                         </div>
                         <div class="col-3">
                                 <select name="pacienteSexo" id="pacienteSexo" class="form-control" value="{{ $paciente['sexo'] }}">
-                                <option value="Masculino" >
+                                <option value="Masculino" {{ ($paciente['sexo'] == 'Masculino' ? "selected": "") }}>
                                     Masculino
                                 </option>
-                                <option value="Feminino">
+                                <option value="Feminino" {{ ($paciente['sexo'] == 'Feminino' ? "selected": "") }}>
                                     Feminino
                                 </option>
                             </select>
@@ -201,4 +201,8 @@
         </div>
     </div>
   </div>    
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/maskPaciente.js') }}"></script>
 @endsection
