@@ -48,7 +48,7 @@
                             <label for="fisioCrefito">CREFITO N°:</label>
                         </div>
                         <div class="col-6">
-                            <label for="fisioCpf">CPF:</label>
+                            <label for="fisioCpf">CPF do Fisio:</label>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-6">
-                            <label for="fisioSenha">Senha:</label>
+                            <label for="fisioSenha">Senha para acesso:</label>
                         </div>
                     </div>
                 </div>
