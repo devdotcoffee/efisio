@@ -41,7 +41,7 @@ class FisioValidation extends FormRequest
             'fisioCpf.unique'           => 'Esse CPF já existe',
             'fisioCrefito.required'     => 'O n° CREFITO é obrigatório',
             'fisioCrefito.unique'       => 'Esse CREFITO já existe',
-            'password'                  => 'A senha é necessária'
+            'password.required'         => 'A senha é necessária'
         ];
     }
 }
