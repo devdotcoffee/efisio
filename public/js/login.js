@@ -7,5 +7,5 @@ $('#collapsePaciente').on('show.bs.collapse', () => {
 $(document).ready(function(){
     setTimeout(function() {
         $(".alert").alert('close');
-    }, 3000);
+    }, 1500);
 });
