@@ -36,5 +36,13 @@
     @hasSection ('js')
       @yield('js')
     @endif
+    <script>
+      $('#inputPesquisa').focus(() => {
+        $('div.input-group').addClass('input-shadow')
+      });
+      $('#inputPesquisa').blur(() => {
+        $('div.input-group').removeClass('input-shadow')
+      });
+    </script>
   </body>
 </html>
