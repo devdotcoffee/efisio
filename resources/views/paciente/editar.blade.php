@@ -39,7 +39,7 @@
                             </label>
                         </div>
                         <div class="col-10">
-                            <input id="pacienteCpf" type="text" class="form-control required @error('pacienteCpf') is-invalid @enderror" 
+                            <input id="pacienteCpf cpf" type="text" class="form-control required @error('pacienteCpf') is-invalid @enderror" 
                                 name="pacienteCpf" value="{{ $paciente['cpf'] }}">
                             @error('pacienteCpf')
                                 <small class="form-text text-muted error-message">
@@ -93,7 +93,7 @@
                             </label>
                         </div>
                         <div class="col-3">
-                            <input id="pacienteTelefone" type="text" class="form-control required @error('pacienteTelefone') is-invalid @enderror" 
+                            <input id="pacienteTelefone telefone" type="text" class="form-control required @error('pacienteTelefone') is-invalid @enderror" 
                                 name="pacienteTelefone" value="{{ $paciente['telefone'] }}">
                             @error('pacienteTelefone')
                                 <small class="form-text text-muted error-message">
@@ -204,5 +204,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/maskPaciente.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js" integrity="sha256-Kg2zTcFO9LXOc7IwcBx1YeUBJmekycsnTsq2RuFHSZU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/mask.js') }}"></script>
 @endsection

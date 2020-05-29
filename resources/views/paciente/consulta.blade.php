@@ -128,7 +128,7 @@
                                 </label>
                             </div>
                             <div class="col-10">
-                                <input id="pacienteCpf" type="text" class="form-control required" name="pacienteCpf">
+                                <input id="pacienteCpf" type="text" class="form-control required cpf" name="pacienteCpf">
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                                 </label>
                             </div>
                             <div class="col-3">
-                                <input id="pacienteTelefone" type="text" class="form-control required" name="pacienteTelefone">
+                                <input id="pacienteTelefone" type="text" class="form-control required telefone" name="pacienteTelefone">
                             </div>
                             <div class="col-2 d-flex">
                                 <label for="pacienteSexo">Sexo:<sup class="important">*</sup></label>
@@ -286,5 +286,7 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js" integrity="sha256-Kg2zTcFO9LXOc7IwcBx1YeUBJmekycsnTsq2RuFHSZU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/mask.js') }}"></script>
     <script type="module"  src="{{ asset('js/consultaPaciente.js') }}"></script>
 @endsection 

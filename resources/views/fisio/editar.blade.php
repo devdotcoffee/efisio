@@ -63,7 +63,7 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <input class="form-control @error('fisioCpf') is-invalid @enderror" type="text" name="fisioCpf" id="fisioCpf" value="{{ $fisio['cpf'] }}">
+                            <input class="form-control @error('fisioCpf') is-invalid @enderror cpf" type="text" name="fisioCpf" id="fisioCpf" value="{{ $fisio['cpf'] }}">
                             @error('fisioCpf')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
@@ -98,4 +98,9 @@
         </div>
     </div>
   </div>
+@endsection
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js" integrity="sha256-Kg2zTcFO9LXOc7IwcBx1YeUBJmekycsnTsq2RuFHSZU=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/mask.js') }}"></script>
 @endsection
