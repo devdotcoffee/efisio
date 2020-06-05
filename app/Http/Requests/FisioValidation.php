@@ -26,9 +26,10 @@ class FisioValidation extends FormRequest
         return [
             'fisioNome'         => 'required',
             'fisioNascimento'   => 'required',
-            'fisioCpf'          => 'required',
-            'fisioCrefito'      => 'required',
-            'password'          => 'required'
+            'fisioCpf'          => 'required|unique:fisioterapeutas,cpf',
+            'fisioCrefito'      => 'required|unique:fisioterapeutas,crefito',
+            'password'          => 'required',
+            'fisioPermissao'    => 'required'
         ];
     }
 
@@ -41,7 +42,8 @@ class FisioValidation extends FormRequest
             'fisioCpf.unique'           => 'Esse CPF já existe',
             'fisioCrefito.required'     => 'O n° CREFITO é obrigatório',
             'fisioCrefito.unique'       => 'Esse CREFITO já existe',
-            'password.required'         => 'A senha é necessária'
+            'password.required'         => 'A senha é necessária',
+            'fisioPermissao.required'   => 'A permissão é necessária'
         ];
     }
 }

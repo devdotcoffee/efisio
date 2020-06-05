@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\FisioValidation;
 use App\Fisio;
+use App\FisioLogin;
 
 class FisioController extends Controller
 {
@@ -65,8 +66,12 @@ class FisioController extends Controller
      */
     public function edit($id)
     {
-        $fisio = Fisio::getFisioById($id);
-        return view('fisio.editar', compact('fisio'));
+        $usuario    = FisioLogin::getByFisio($id);
+        $fisio      = Fisio::getFisioById($id);
+        return view('fisio.editar', [
+            'fisio'     => $fisio,
+            'usuario'   => $usuario
+        ]);
     }
 
     /**

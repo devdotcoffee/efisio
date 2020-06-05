@@ -7,9 +7,13 @@
       <li class="nav-item">
         <a class="nav-link btn-nav" href="{{ route('lista-pacientes') }}">Pacientes</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link btn-nav" href="{{ route('lista-fisios') }}">Fisioterapeuta</a>
-      </li>
+      @if (Auth::guard('fisio')->check())
+        @if (Auth::guard('fisio')->user()->permissao == 'Administrador')
+          <li class="nav-item">
+            <a class="nav-link btn-nav" href="{{ route('lista-fisios') }}">Fisioterapeuta</a>
+          </li>
+        @endif
+      @endif
       <li class="nav-item">
         <a class="nav-link btn-nav" href="{{ route('lista-prontuarios') }}">Prontuários</a>
       </li>

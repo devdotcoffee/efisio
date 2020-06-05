@@ -74,15 +74,29 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-6">
-                            <label for="fisioSenha">Senha de acesso:</label>
+                            <label for="fisioSenha">Senha de Acesso:</label>
+                        </div>
+                        <div class="col-6">
+                            <label for="fisioPermissao">Permissão de Acesso:</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-6">
-                            <input class="form-control @error('password') is-invalid @enderror " type="password" name="password" id="fisioSenha" value="">
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="fisioSenha" autocomplete="off">
                             @error('password')
+                                <small class="form-text tex-muted error-message">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
+                        <div class="col-6">
+                            <select class="form-control @error('fisioPermissao') is-invalid @enderror" name="fisioPermissao" id="fisioPermissao">
+                                <option value="Padrão" selected>Padrão</option>
+                                <option value="Administrador">Administrador</option>
+                            </select>
+                            @error('fisioPermissao')
                                 <small class="form-text tex-muted error-message">
                                     {{ $message }}
                                 </small>

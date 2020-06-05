@@ -11,7 +11,7 @@ class Fisio extends Model
 
     public static function todos()
     {
-        return self::paginate(2);
+        return self::paginate(10);
     }
 
     public static function salvar($request)
@@ -23,7 +23,12 @@ class Fisio extends Model
         $fisio->cpf             = $request->input('fisioCpf');
         $fisio->save();
 
-        FisioLogin::salvar($fisio->crefito, $request->input('password'), $fisio->id);
+        FisioLogin::salvar([
+            'id'        => $fisio->id,
+            'crefito'   => $fisio->crefito, 
+            'password'  => $request->input('password'),
+            'permissao' => $request->input('fisioPermissao') 
+        ]);
 
         return $fisio;
     }
