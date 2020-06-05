@@ -12,5 +12,9 @@
 e-fisio é uma maneira mais fácil e rápida para o gerencimento de prontuários fisioterapêuticos. 
 Provendo segurança e acesso dos pacientes a consulta rápida de seus prontuários.
 
-<img src=".github/login.png" width="50%" /> <img src=".github/fisio.png" width="50%" /> 
-<img src=".github/paciente.PNG" width="50%" /> <img src=".github/pagina-pacientes.PNG" width="50%" /> 
+<p float="left">
+<img src=".github/login.png" width="50%" /> 
+<img src=".github/fisio.png" width="50%" /> 
+<img src=".github/paciente.PNG" width="50%" /> 
+<img src=".github/pagina-pacientes.PNG" width="50%" /> 
+</p>
