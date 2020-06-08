@@ -18,34 +18,46 @@ class LoginFisioController extends Controller
     {
         $rules = [
             'crefito'    => 'required',
-            'senha' => 'required',
+            'password' => 'required',
         ];
 
         $messages = [
-            'crefito.required' => 'É necessário',
-            'senha.required' => 'É necessário',
+            'crefito.required' => 'CREFITO é necessário',
+            'password.required' => 'Senha é necessária',
         ];
 
         $request->validate($rules, $messages); 
     }
 
+    private function loginFailed()
+    {
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', 'Erro no login, tente novamente.');
+    }
+
     public function login(Request $request)
     {
+        $this->validator($request);
+
         if(Auth::guard('fisio')->attempt($request->only('crefito', 'password'))){
-            //Authentication passed...
+            //Authentication passed
             return redirect()
                 ->route('fisio.home');
         }
 
-        return redirect()->back()->with('error', 'Erro no login, tente novamente.');
+        //Authentication failed
+        return $this->loginFailed();
     
     }
 
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('fisio')->logout();
         return redirect()
-            ->route('tela-login');
+            ->route('tela-login')
+            ->with('status', 'Fisio saiu!');
     }
 
 }

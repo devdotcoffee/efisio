@@ -21,7 +21,7 @@ Route::prefix('fisio')->group(function () {
         
         //Login Routes
         Route::get('/login','LoginFisioController@loginForm');
-        Route::post('/logout','LoginController@logout')->name('logout');
+        Route::get('/logout','LoginFisioController@logout')->name('logout-fisio');
     
     });
     
@@ -90,6 +90,11 @@ Route::prefix('fisio')->group(function () {
 });
 
 Route::prefix('paciente')->group(function () {
+    Route::namespace('Auth')->group(function(){
+        //Login Routes
+        Route::get('/login','LoginPacienteController@loginForm');
+        Route::get('/logout','LoginPacienteController@logout')->name('logout-paciente');
+    });
     Route::get('/', 'PacienteController@home')
         ->name('paciente.home');
 });
