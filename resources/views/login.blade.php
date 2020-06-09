@@ -43,6 +43,14 @@
         <h1 class="text-center m-2">
             <img id="logo-login" src="{{ asset('img/logo-e-fisio.svg') }}" alt="Logo e-fisio">
         </h1>
+        @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>            
+        @endif
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{session('error')}}
@@ -53,10 +61,12 @@
         @endif
         <div class="d-block m-auto" id="containerBtn">
             <div class="d-flex justify-content-around">
-                <button class="btn btnForm" id="btnFormPaciente" data-toggle="collapse" data-target="#collapsePaciente" role="button" aria-expanded="false" aria-controls="collapsePaciente">
+                <button class="btn btnForm" id="btnFormPaciente" data-toggle="collapse" data-target="#collapsePaciente" 
+                    role="button" aria-expanded="false" aria-controls="collapsePaciente">
                     Sou paciente
                 </button>
-                <button class="btn btnForm" id="btnFormFisio" type="button" data-toggle="collapse" data-target="#collapseFisio" aria-expanded="false" aria-controls="collapseFisio">
+                <button class="btn btnForm" id="btnFormFisio" type="button" data-toggle="collapse" data-target="#collapseFisio" 
+                    role="button" aria-expanded="false" aria-controls="collapseFisio">
                     Sou fisio
                 </button>
             </div>
@@ -76,27 +86,27 @@
                 </form>
             </div>
         </div>
-        <div class="collapse" id="collapseFisio">
+        <div class="collapse {{ ($errors->has('crefito') || $errors->has('password')) ? "show" : "" }}" id="collapseFisio">
             <div class="card card-body w-50 mx-auto">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
                         <label for="crefito">CREFITO:</label>
                         <input id="crefito" type="text" class="form-control" name="crefito">
-                        @if ($errors->has('crefito'))
-                            <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('crefito') }}</strong>
-                            </span>
-                        @endif
+                        @error('crefito')
+                            <small class="form-text tex-muted error-message">
+                                {{ $message }}
+                            </small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha:</label>
                         <input id="senha" type="password" class="form-control" name="password">
-                        @if ($errors->has('senha'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('senha') }}</strong>
-                            </span>
-                        @endif
+                        @error('password')
+                            <small class="form-text tex-muted error-message">
+                                {{ $message }}
+                            </small>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btnForm w-100">Entrar</button>
                 </form>

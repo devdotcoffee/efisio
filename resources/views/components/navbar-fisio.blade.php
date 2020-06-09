@@ -44,7 +44,7 @@
                     <button class="btn btn-secondary btn-block" type="button" data-dismiss="modal" aria-label="Fechar" id="closeModalDelete">
                         Cancelar
                     </button>
-                    <a  href="{{ route('tela-login') }}" class="btn btn-danger btn-block" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
+                    <a  href="{{ route('logout-fisio') }}" class="btn btn-danger btn-block" type="button" aria-label="Deletar" id="btnDeleteConfirm" data-id="">
                         Sair
                     </a>
                 </div>
