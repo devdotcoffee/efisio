@@ -7,12 +7,14 @@ use App\Http\Requests\PacienteValidation;
 use Validator;
 use App\Paciente;
 use App\Prontuario;
+use Auth;
 
 class PacienteController extends Controller
 {
     public function home()
     {
-        return view('paciente.home');
+        $prontuarios = Prontuario::getProntuarioByPacienteWithFisio(Auth::guard('paciente')->user()->idFisioterapeuta);
+        return view('paciente.home', compact('prontuarios'));
     }
     /**
      * Display a listing of the resource.
