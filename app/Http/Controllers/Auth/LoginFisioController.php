@@ -17,12 +17,12 @@ class LoginFisioController extends Controller
     private function validator(Request $request)
     {
         $rules = [
-            'crefito'    => 'required',
-            'password' => 'required',
+            'crefito'   => 'required',
+            'password'  => 'required',
         ];
 
         $messages = [
-            'crefito.required' => 'CREFITO é necessário',
+            'crefito.required'  => 'CREFITO é necessário',
             'password.required' => 'Senha é necessária',
         ];
 
@@ -40,7 +40,7 @@ class LoginFisioController extends Controller
     public function login(Request $request)
     {
         $this->validator($request);
-
+ 
         if(Auth::guard('fisio')->attempt($request->only('crefito', 'password'))){
             //Authentication passed
             return redirect()
