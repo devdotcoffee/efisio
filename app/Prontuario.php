@@ -62,6 +62,14 @@ class Prontuario extends Model
         ->first();
     }
 
+    public static function getProntuarioByPacienteWithFisio($id)
+    {
+        return Prontuario::where('idPaciente', $id)
+        ->join('fisioterapeutas', 'prontuarios.idFisioterapeuta', '=', 'fisioterapeutas.idFisioterapeuta')
+        ->select('prontuarios.*', 'fisioterapeutas.nome as fisio', 'fisioterapeutas.*')
+        ->get();
+    }
+
     public static function alterar($id, $request)
     {
         Prontuario::where('idProntuario', $id)
