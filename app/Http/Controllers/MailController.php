@@ -7,11 +7,16 @@ use Mail;
 
 class MailController extends Controller
 {
-    public static function send($paciente)
+    public static function sendPassword($paciente)
     {
-        Mail::send('mail',['senha' => 'efisio'], function($m) use ($paciente){
-            $m->from('devdotcoffee@gmail.com', 'Dev.Coffee');
-            $m->to($paciente->email)->subject('Senha - efisio');
+        $data = [
+            'route'         => route('view-senha', $paciente->id),
+            'nome'          => $paciente->nome,
+            'data_cadastro' => $paciente->data_cadastro
+        ];
+        Mail::send('mail', $data, function($message) use ($paciente){
+            $message->from('devdotcoffee@gmail.com', 'Dev.Coffee');
+            $message->to($paciente->email)->subject('Cadastrar senha - efisio');
         });
     }
 }

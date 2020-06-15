@@ -12,8 +12,21 @@
     </style>
 </head>
 <body>
-    <h1>Seja bem-vindo</h1>
-    <h2>Sua senha para acesso ao sistema é:</h2>
-    <h1>{{ $senha }}</h1>
+    <h1>Seja bem-vindo {{ $nome }}</h1>
+    <h3>Dados:</h3>
+    <p>
+        <strong>
+            Nome:
+        </strong>
+        {{ $nome }}
+    </p>
+    <p>
+        <strong>
+            Data do cadastro
+        </strong>
+        {{ date('d/m/Y', strtotime($data_cadastro)) }}
+    </p>
+    <h3>Clique aqui para cadastrar sua senha:</h3>
+    <a>{{ $route }}</a>
 </body>
 </html>
