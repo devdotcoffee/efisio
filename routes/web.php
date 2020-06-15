@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('login');
 })->name('tela-login');
 
-Route::post('/login','Auth\LoginFisioController@login')->name('login');
+Route::post('/login-fisio','Auth\LoginFisioController@login')->name('fisio-login');
+Route::post('/login-paciente','Auth\LoginPacienteController@login')->name('paciente-login');
 Route::prefix('fisio')->group(function () {
     Route::namespace('Auth')->group(function(){
         
@@ -93,13 +94,19 @@ Route::prefix('paciente')->group(function () {
     Route::namespace('Auth')->group(function(){
         //Login Routes
         Route::get('/login','LoginPacienteController@loginForm');
-        Route::get('/logout','LoginPacienteController@logout')->name('logout-paciente');
+        Route::get('/logout','LoginPacienteController@logout')
+            ->name('logout-paciente');
+        Route::get('/senha/{id}', 'LoginPacienteController@viewSenha')
+            ->name('view-senha');
+        Route::post('/cadastrar-senha/{id}', 'LoginPacienteController@cadastrarSenha')
+            ->name('cadastrar-senha');
     });
     Route::get('/', 'PacienteController@home')
         ->name('paciente.home');
+
 });
 
 Route::get('pdf-prontuario/{id}', 'PdfController@builderProntuario')
     ->name('pdf-prontuario');
 
-Route::get('/sendmail', 'MailController@send')->name('send-mail');
+Route::get('/sendmail', 'MailController@sendPassword')->name('send-mail');

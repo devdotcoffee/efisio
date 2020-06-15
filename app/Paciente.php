@@ -31,7 +31,7 @@ class Paciente extends Model
         $paciente->data_cadastro        = $request->data_cadastro;
         $paciente->save();
 
-        //MailController::send($paciente);
+        MailController::sendPassword($paciente);
         return $paciente;
     }
 

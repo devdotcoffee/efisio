@@ -73,40 +73,31 @@
         </div>
         <div class="collapse" id="collapsePaciente">
             <div class="card card-body w-50 mx-auto">
-                <form method="GET" action="">
+                <form method="POST" action="{{ route('paciente-login') }}" autocomplete="off">
+                    @csrf
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
-                        <input id="cpf" type="text" class="form-control">
+                        <input id="cpf" type="text" class="form-control cpf" name="cpf" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="senhaPaciente">Senha:</label>
-                        <input id="senhaPaciente" type="password" class="form-control">
+                        <label for="password">Senha:</label>
+                        <input id="password" type="password" class="form-control" name="password">
                     </div>
-                    <a href="{{ route('paciente.home') }}" class="btn btnForm w-100">Entrar</a>
+                    <button type="submit" class="btn btnForm w-100">Entrar</button>
                 </form>
             </div>
         </div>
-        <div class="collapse {{ ($errors->has('crefito') || $errors->has('password')) ? "show" : "" }}" id="collapseFisio">
+        <div class="collapse" id="collapseFisio">
             <div class="card card-body w-50 mx-auto">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('fisio-login') }}">
                     @csrf
                     <div class="form-group">
                         <label for="crefito">CREFITO:</label>
                         <input id="crefito" type="text" class="form-control" name="crefito">
-                        @error('crefito')
-                            <small class="form-text tex-muted error-message">
-                                {{ $message }}
-                            </small>
-                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha:</label>
                         <input id="senha" type="password" class="form-control" name="password">
-                        @error('password')
-                            <small class="form-text tex-muted error-message">
-                                {{ $message }}
-                            </small>
-                        @enderror
                     </div>
                     <button type="submit" class="btn btnForm w-100">Entrar</button>
                 </form>
@@ -116,5 +107,6 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js" integrity="sha256-Kg2zTcFO9LXOc7IwcBx1YeUBJmekycsnTsq2RuFHSZU=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/login.js') }}"></script>
 @endsection
