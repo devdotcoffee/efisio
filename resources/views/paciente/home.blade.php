@@ -51,7 +51,7 @@
 @section('paciente')
         <div class="card card-paciente">
             <div class="card-body">
-                <h2 class="card-title">Bem-vindo Erick</h2>
+            <h2 class="card-title">Bem-vindo {{ $paciente['nome'] }}</h2>
                 <hr>
                 @if (count($prontuarios) > 0)
                     @foreach ($prontuarios as $prontuario)
@@ -92,9 +92,11 @@
                         </table>
                     @endforeach
                 @else
-                    <div class="alert alert-danger" role="alert">
-                        Não existem prontuários cadastrados.
-                    </div>
+                <div class="alert alert-danger d-none" role="alert" id="alertError">
+                    <p class="alert-text text-center">
+                        Não há prontuários cadastrados.
+                    </p>
+                </div>
                 @endif
             </div>
         </div>
