@@ -26,7 +26,6 @@
         </strong>
         {{ date('d/m/Y', strtotime($data_cadastro)) }}
     </p>
-    <h3>Clique aqui para cadastrar sua senha:</h3>
-    <a>{{ $route }}</a>
+    <h3>Clique <a href="{{ $route }}">aqui</a> para cadastrar sua senha</h3>
 </body>
 </html>
