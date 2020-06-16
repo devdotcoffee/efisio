@@ -13,8 +13,9 @@ class PacienteController extends Controller
 {
     public function home()
     {
-        $prontuarios = Prontuario::getProntuarioByPacienteWithFisio(Auth::guard('paciente')->user()->idFisioterapeuta);
-        return view('paciente.home', compact('prontuarios'));
+        $paciente = Paciente::getPacienteById(Auth::guard('paciente')->user()->idPaciente);
+        $prontuarios = Prontuario::getProntuarioByPacienteWithFisio(Auth::guard('paciente')->user()->idPaciente);
+        return view('paciente.home', ['prontuarios' => $prontuarios, 'paciente' => $paciente]);
     }
     /**
      * Display a listing of the resource.
