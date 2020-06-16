@@ -26,8 +26,8 @@ class FisioValidation extends FormRequest
         return [
             'fisioNome'         => 'required',
             'fisioNascimento'   => 'required',
-            'fisioCpf'          => 'required|unique:fisioterapeutas,cpf',
-            'fisioCrefito'      => 'required|unique:fisioterapeutas,crefito',
+            'fisioCpf'          => 'required',
+            'fisioCrefito'      => 'required',
             'password'          => 'required',
             'fisioPermissao'    => 'required'
         ];
