@@ -84,15 +84,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col-6">
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" id="fisioSenha" autocomplete="off" value="{{ $usuario['password'] }}">
-                            @error('password')
-                                <small class="form-text tex-muted error-message">
-                                    {{ $message }}
-                                </small>
-                            @enderror
-                        </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <select class="form-control @error('fisioPermissao') is-invalid @enderror" name="fisioPermissao" id="fisioPermissao">
                                 <option value="Padrão" {{ ($usuario['permissao'] == "Padrão" ? 'selected' : "") }}>Padrão</option>
                                 <option value="Administrador" {{ ($usuario['permissao'] == "Administrador" ? "selected" : "") }} >Administrador</option>
