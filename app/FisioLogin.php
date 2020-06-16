@@ -12,6 +12,7 @@ class FisioLogin extends Authenticatable
     use Notifiable;
     protected $primaryKey = 'idUsuarioFisio';
     protected $table = "usuario_fisio";
+    
     /**
      * The attributes that are mass assignable.
      *

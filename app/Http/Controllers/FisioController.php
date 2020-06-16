@@ -9,6 +9,11 @@ use App\FisioLogin;
 
 class FisioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:fisio');
+    }
+
     public function home()
     {
         return view('fisio.home');
